@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAL_STORE💋 | Catálogo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; }
+        .product-card { background: #ffffff; border-radius: 12px; overflow: hidden; cursor: pointer; color: #333; transition: transform 0.2s; }
+        .product-card:active { transform: scale(0.95); }
+        .tag-nuevo { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.8); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
+        
+        #modal { display: none; background: #000; transition: all 0.3s ease; }
+        .modal-content { background: white; border-radius: 30px 30px 0 0; width: 100%; position: absolute; bottom: 0; padding: 25px 20px; text-align: center; color: black; }
+        .img-container { height: 65vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; top: -2vh; }
+        #m-img { max-height: 90%; max-width: 95%; object-fit: contain; border-radius: 15px; }
+        
+        .nav-btn { position: absolute; top: 40%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; z-index: 70; display: flex; align-items: center; justify-content: center; }
+        .talla-badge { background: #f3f4f6; color: #6b7280; font-size: 10px; padding: 2px 6px; border-radius: 4px; border: 1px solid #e5e7eb; }
+        
+        #music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <!-- Música de fondo: Showreel Music de Pixabay (Volumen 20%) -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Sonido de Clic (Volumen 100%) -->
+    <audio id="click-sound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" onclick="toggleMusic()">🎵</div>
+
+    <header class="bg-white text-black py-8 px-4 text-center">
+        <h1 class="text-3xl font-bold tracking-tight">Nuevos Ingresos</h1>
+        <p class="text-gray-500 text-sm mt-1">Marcas exclusivas • Piezas únicas</p>
+    </header>
+
+    <nav class="bg-white border-t border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-50">
+        <span class="font-bold text-lg tracking-tighter text-black">VAL_STORE💋</span>
+        <!-- WhatsApp con mensaje automático general -->
+        <a href="https://wa.me/50240283552?text=¡Hola%20Val_Store!%20💋%20He%20visto%20tu%20catálogo%20y%20me%20gustaría%20recibir%20más%20información." class="bg-black text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">WhatsApp</a>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-3 gap-4" id="galeria"></main>
+
+    <div id="modal" class="fixed inset-0 z-[60] flex flex-col items-center">
+        <button onclick="cerrar()" class="absolute top-6 left-6 text-white text-xs bg-white/10 px-4 py-2 rounded-full border border-white/20 z-[80] backdrop-blur-md">✕ Salir</button>
+        <button onclick="cambiarPrenda(-1)" class="nav-btn left-2">‹</button>
+        <button onclick="cambiarPrenda(1)" class="nav-btn right-2">›</button>
+        <div class="img-container"><img id="m-img" src=""></div>
+        <div class="modal-content shadow-2xl">
+            <p id="m-marca" class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1"></p>
+            <h2 id="m-titulo" class="text-xl font-bold text-black mb-1"></h2>
+            <p id="m-talla" class="text-gray-400 text-xs mb-3"></p>
+            <p id="m-precio" class="text-black font-bold text-3xl mb-6"></p>
+            <button onclick="comprarPorWA()" class="bg-[#E01E37] text-white w-full py-4 rounded-2xl font-bold text-lg shadow-lg">Preguntar por WhatsApp 💋</button>
+        </div>
+    </div>
+
+    <script>
+        const prendas = [
+            { img: 'https://i.ibb.co/hFcZD64w/images-3.jpg', titulo: 'Playera Casual', precio: 'Q150', talla: 'M', marca: 'EXCLUSIVO' },
+            { img: 'https://i.ibb.co/ks3TKzXM/images-2.jpg', talla: 'S', precio: 'Q180', titulo: 'Blusa Estampada', marca: 'MARCA' },
+            { img: 'https://i.ibb.co/9PpL4cf/images-1.jpg', talla: 'L', precio: 'Q200', titulo: 'Suéter Ligero', marca: 'MARCA' },
+            { img: 'https://i.ibb.co/N6PxSPmk/images.jpg', talla: '32', precio: 'Q250', titulo: 'Pantalón Denim', marca: 'MARCA' },
+            { img: 'https://i.ibb.co/JRGYGWr4/ropa-de-segunda-mano.jpg', talla: 'Única', precio: 'Q300', titulo: 'Lote Selección', marca: 'VAL_STORE' }
+        ];
+
+        let indexActual = 0;
+        const bgMusic = document.getElementById('bg-music');
+        const clickSfx = document.getElementById('click-sound');
+
+        bgMusic.volume = 0.20; 
+        clickSfx.volume = 1.0; // Ajustado a 1.0 para representar el 100% que solicitaste anteriormente
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                bgMusic.pause();
+                document.getElementById('music-control').innerText = "🎵";
+            }
+        });
+
+        function playClick() { 
+            clickSfx.currentTime = 0; 
+            clickSfx.play().catch(() => {}); 
+        }
+
+        function toggleMusic() {
+            if (bgMusic.paused) { 
+                bgMusic.play(); 
+                document.getElementById('music-control').innerText = "🔊"; 
+            } else { 
+                bgMusic.pause(); 
+                document.getElementById('music-control').innerText = "🎵"; 
+            }
+        }
+
+        const galeria = document.getElementById('galeria');
+        prendas.forEach((p, i) => {
+            galeria.innerHTML += `
+                <div class="product-card relative shadow-sm" onclick="abrirModal(${i})">
+                    <div class="tag-nuevo">Nuevo</div>
+                    <img src="${p.img}" class="w-full aspect-[3/4] object-cover">
+                    <div class="p-3 bg-white text-center">
+                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">${p.marca}</p>
+                        <h3 class="text-xs font-semibold text-gray-800 truncate">${p.titulo}</h3>
+                        <div class="flex items-center justify-between mt-2">
+                            <p class="font-bold text-black text-sm">${p.precio}</p>
+                            <span class="talla-badge">Talla ${p.talla}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function abrirModal(index) {
+            playClick();
+            indexActual = index;
+            actualizarModal();
+            document.getElementById('modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function actualizarModal() {
+            const p = prendas[indexActual];
+            document.getElementById('m-img').src = p.img;
+            document.getElementById('m-marca').innerText = p.marca;
+            document.getElementById('m-titulo').innerText = p.titulo;
+            document.getElementById('m-talla').innerText = "Talla disponible: " + p.talla;
+            document.getElementById('m-precio').innerText = p.precio;
+        }
+
+        function cambiarPrenda(direccion) {
+            playClick();
+            indexActual += direccion;
+            if (indexActual < 0) indexActual = prendas.length - 1;
+            if (indexActual >= prendas.length) indexActual = 0;
+            actualizarModal();
+        }
+
+        function cerrar() { 
+            playClick(); 
+            document.getElementById('modal').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        }
+
+                 function comprarPorWA() {
+            const p = prendas[indexActual];
+            const mensaje = "¡Hola Val_Store! 💋 Me interesa esta prenda:\n\n" + 
+                            "📌 Producto: " + p.titulo + "\n" +
+                            "💰 Precio: " + p.precio + "\n" +
+                            "📏 Talla: " + p.talla + "\n" + 
+                            "🖼️ Imagen: " + p.img + "\n\n" + // <--- ESTA ES LA LÍNEA QUE FALTA
+                            "¿Sigue disponible?";
+            
+            window.location.href = "https://wa.me/50240283552?text=" + encodeURIComponent(mensaje);
+        }
+
+
+
+        let touchstartX = 0;
+        let touchendX = 0;
+        document.getElementById('modal').addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.getElementById('modal').addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 60) cambiarPrenda(1); 
+            if (touchendX - touchstartX > 60) cambiarPrenda(-1); 
+        });
+    </script>
+</body>
+</html>
