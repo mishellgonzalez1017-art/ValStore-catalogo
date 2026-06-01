@@ -265,3 +265,121 @@
             
             bgMusic.play().catch(e => console.log("Permiso de audio bloqueado", e));
             renderGaleria();
+        }
+
+        function filterItems(category) {
+            currentFilter = category;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.includes(category)) btn.classList.add('active');
+            });
+            renderGaleria();
+        }
+
+        function renderGaleria() {
+            const container = document.getElementById('galeria');
+            container.innerHTML = '';
+            
+            let filtered = prendas.filter(p => {
+                if(currentFilter === 'Oferta') return p.oferta === true;
+                return p.cat === currentFilter;
+            });
+
+            filtered.forEach((p, i) => {
+                const globalIndex = prendas.indexOf(p);
+                container.innerHTML += `
+                    <div class="product-card group reveal-up" style="animation-delay: ${i*0.08}s" onclick="abrirModal(${globalIndex})">
+                        <div class="relative overflow-hidden aspect-[3/4]">
+                            <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            ${p.oferta ? '<div class="absolute top-2 left-2 discount-tag">OFERTA</div>' : ''}
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <p class="text-[8px] font-black tracking-[0.2em] md:tracking-[0.3em] text-[#E01E37] uppercase">${p.marca}</p>
+                            <h3 class="text-xs md:text-sm font-bold truncate mt-1">${p.titulo}</h3>
+                            <div class="flex justify-between items-center mt-2 md:mt-4">
+                                <span class="font-black text-sm md:text-lg">${p.precio}</span>
+                                <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${p.talla}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function abrirModal(index) {
+            indexActual = index;
+            actualizarModal();
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function actualizarModal() {
+            const p = prendas[indexActual];
+            const imgEl = document.getElementById('m-img');
+            
+            imgEl.classList.remove('anim-pop');
+            void imgEl.offsetWidth; 
+            
+            imgEl.src = p.img;
+            imgEl.classList.add('anim-pop');
+            
+            document.getElementById('m-titulo').innerText = p.titulo;
+            document.getElementById('m-marca').innerText = p.marca;
+            document.getElementById('m-precio').innerText = p.precio;
+            document.getElementById('m-talla').innerText = "Talla: " + p.talla;
+            
+            if(p.oferta) document.getElementById('tag-oferta').classList.remove('hidden');
+            else document.getElementById('tag-oferta').classList.add('hidden');
+        }
+
+        function cambiarPrenda(dir) {
+            indexActual = (indexActual + dir + prendas.length) % prendas.length;
+            actualizarModal();
+        }
+
+        function cerrar() {
+            document.getElementById('modal').classList.remove('flex');
+            document.getElementById('modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function comprarPorWA() {
+    const p = prendas[indexActual];
+
+    const msg = `¡Hola Val_Store! 💋 Me interesa esta prenda:
+
+📌 Producto: ${p.titulo}
+🏷️ Marca: ${p.marca}
+💰 Precio: ${p.precio}
+📏 Talla: ${p.talla}
+
+📸 Imagen del producto:
+${p.img}
+
+¿Sigue disponible?`;
+
+    window.location.href = `https://wa.me/50240283552?text=${encodeURIComponent(msg)}`;
+}
+
+        function toggleMusic() {
+            const icono = document.getElementById('music-control');
+            if (bgMusic.paused) { 
+                bgMusic.play(); 
+                icono.style.opacity = '1';
+            } else { 
+                bgMusic.pause(); 
+                icono.style.opacity = '0.5';
+            }
+        }
+
+        let touchstartX = 0;
+        document.getElementById('modal').addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.getElementById('modal').addEventListener('touchend', e => {
+            let touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) cambiarPrenda(1); 
+            if (touchendX - touchstartX > 50) cambiarPrenda(-1); 
+        });
+    </script>
+</body>
+</html>
