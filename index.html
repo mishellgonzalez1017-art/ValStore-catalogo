@@ -3,195 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VAL_STORE💋 | Catálogo</title>
+    <title>VAL_STORE💋 | Premium Catalog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f0f0f; color: #ffffff; overflow-x: hidden; }
-        .product-card { background: #ffffff; border-radius: 12px; overflow: hidden; cursor: pointer; color: #333; transition: transform 0.2s; }
-        .product-card:active { transform: scale(0.95); }
-        .tag-nuevo { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.8); color: white; font-size: 8px; padding: 2px 6px; border-radius: 4px; font-weight: bold; text-transform: uppercase; }
-        
-        #modal { display: none; background: #000; transition: all 0.3s ease; }
-        .modal-content { background: white; border-radius: 30px 30px 0 0; width: 100%; position: absolute; bottom: 0; padding: 25px 20px; text-align: center; color: black; }
-        .img-container { height: 65vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; top: -2vh; }
-        #m-img { max-height: 90%; max-width: 95%; object-fit: contain; border-radius: 15px; }
-        
-        .nav-btn { position: absolute; top: 40%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; z-index: 70; display: flex; align-items: center; justify-content: center; }
-        .talla-badge { background: #f3f4f6; color: #6b7280; font-size: 10px; padding: 2px 6px; border-radius: 4px; border: 1px solid #e5e7eb; }
-        
-        #music-control { position: fixed; bottom: 20px; right: 20px; z-index: 100; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-size: 18px; }
+        :root { --brand-red: #E01E37; --bg-dark: #080808; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: #ffffff; overflow-x: hidden; margin: 0; }
+
+        /* --- NUEVA ANIMACIÓN INICIAL ULTRA CORREGIDA Y COMPATIBLE --- */
+        #intro-bg {
+            position: fixed; inset: 0; background-color: #000; z-index: 150;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        #animated-logo {
+            position: fixed; z-index: 200; white-space: nowrap;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 3rem; opacity: 0;
+            animation: elegantFade 2.2s ease-in-out forwards;
+        }
+        @media (min-width: 768px) { #animated-logo { font-size: 5rem; } }
+
+        @keyframes elegantFade {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+            25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* --- PANTALLA HERO --- */
+        #hero {
+            position: fixed; inset: 0; z-index: 100;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 1s ease;
+        }
+        /* Brillo de fondo */
+        .glow-hero {
+            position: absolute; width: 60vw; height: 60vw; max-width: 500px; max-height: 500px;
+            background: var(--brand-red); filter: blur(150px); opacity: 0.15;
+        }
+
+        /* --- UI COMPONENTS --- */
+        .glass-nav {
+            background: rgba(8, 8, 8, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            opacity: 0; transition: opacity 0.8s ease;
+        }
+
+        .category-btn {
+            position: relative; font-weight: 600; font-size: 0.8rem; color: #888;
+            transition: all 0.3s; padding: 0.5rem 1rem;
+        }
+        .category-btn.active { color: #fff; }
+        .category-btn.active::after {
+            content: ''; position: absolute; bottom: 0; left: 25%; width: 50%;
+            height: 2px; background: var(--brand-red);
+        }
+
+        .product-card {
+            background: #111; border-radius: 16px; overflow: hidden;
+            transition: all 0.4s ease; border: 1px solid rgba(255,255,255,0.03);
+            cursor: pointer;
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: rgba(224, 30, 55, 0.4); }
+
+        .discount-tag {
+            background: linear-gradient(45deg, #ff0000, #E01E37);
+            padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 800;
+        }
+
+        /* Animación de entrada de productos */
+        .reveal-up { animation: revealUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        @keyframes revealUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Nueva animación visual para prendas en el modal */
+        @keyframes imagePop {
+            0% { opacity: 0; transform: scale(0.9) translateY(15px); filter: blur(5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+        }
+        .anim-pop {
+            animation: imagePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Ocultar barra de scroll en el modal en móviles */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- Música de fondo: Showreel Music de Pixabay (Volumen 20%) -->
-    <audio id="bg-music" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
-    <!-- Sonido de Clic (Volumen 100%) -->
-    <audio id="click-sound">
-        <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
-    </audio>
+    <div id="animated-logo" class="font-black text-white tracking-tighter">
+        VAL_STORE<span class="text-[#E01E37]">💋</span>
+    </div>
 
-    <div id="music-control" onclick="toggleMusic()">🎵</div>
+    <div id="intro-bg"></div>
 
-    <header class="bg-white text-black py-8 px-4 text-center">
-        <h1 class="text-3xl font-bold tracking-tight">Nuevos Ingresos</h1>
-        <p class="text-gray-500 text-sm mt-1">Marcas exclusivas • Piezas únicas</p>
-    </header>
+    <section id="hero">
+        <div class="glow-hero"></div>
+        <button onclick="startExperience()" class="relative z-10 bg-white text-black px-12 py-4 rounded-full font-black text-[13px] uppercase tracking-widest hover:bg-[#E01E37] hover:text-white transition-all duration-500 transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)] mt-12">
+            Explorar Catálogo
+        </button>
+    </section>
 
-    <nav class="bg-white border-t border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-50">
-        <span class="font-bold text-lg tracking-tighter text-black">VAL_STORE💋</span>
-        <!-- WhatsApp con mensaje automático general -->
-        <a href="https://wa.me/50240283552?text=¡Hola%20Val_Store!%20💋%20He%20visto%20tu%20catálogo%20y%20me%20gustaría%20recibir%20más%20información." class="bg-black text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">WhatsApp</a>
+    <nav id="main-nav" class="glass-nav fixed top-0 w-full z-[90] px-4 md:px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="w-[80px] md:w-[120px] font-black text-lg md:text-xl">VAL_STORE💋</div>
+            
+            <div class="hidden md:flex gap-4">
+                <button onclick="filterItems('Mujer')" class="category-btn active">Mujer</button>
+                <button onclick="filterItems('Hombre')" class="category-btn">Hombre</button>
+                <button onclick="filterItems('Niñ@s')" class="category-btn">Niñ@s</button>
+                <button onclick="filterItems('Oferta')" class="category-btn text-red-500">25% Descuento</button>
+            </div>
+            
+            <div class="flex items-center gap-3 md:gap-5">
+                <a href="https://www.instagram.com/valstore_13?igsh=OGt5YWJjZG5tMWtm" target="_blank" class="text-white hover:text-[#E01E37] transition-colors hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://www.facebook.com/share/1BPJfVMfaA/" target="_blank" class="text-white hover:text-[#E01E37] transition-colors hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="https://wa.me/50240283552?text=¡Hola%20Val_Store!%20💋%20Vengo%20de%20ver%20su%20catálogo%20y%20me%20gustaría%20más%20información." target="_blank" class="text-white hover:text-[#E01E37] transition-colors hover:scale-110">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </a>
+                
+                <div id="music-control" onclick="toggleMusic()" class="cursor-pointer text-xl opacity-50 hover:opacity-100 transition border-l border-white/20 pl-3 md:pl-5">🎵</div>
+            </div>
+        </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-3 gap-4" id="galeria"></main>
+    <div class="md:hidden flex justify-center gap-1 mt-[80px] px-2" id="mobile-nav" style="opacity: 0; transition: opacity 1s ease;">
+        <button onclick="filterItems('Mujer')" class="category-btn active">Mujer</button>
+        <button onclick="filterItems('Hombre')" class="category-btn">Hombre</button>
+        <button onclick="filterItems('Niñ@s')" class="category-btn">Niñ@s</button>
+        <button onclick="filterItems('Oferta')" class="category-btn text-red-500">25% OFF</button>
+    </div>
 
-    <div id="modal" class="fixed inset-0 z-[60] flex flex-col items-center">
-        <button onclick="cerrar()" class="absolute top-6 left-6 text-white text-xs bg-white/10 px-4 py-2 rounded-full border border-white/20 z-[80] backdrop-blur-md">✕ Salir</button>
-        <button onclick="cambiarPrenda(-1)" class="nav-btn left-2">‹</button>
-        <button onclick="cambiarPrenda(1)" class="nav-btn right-2">›</button>
-        <div class="img-container"><img id="m-img" src=""></div>
-        <div class="modal-content shadow-2xl">
-            <p id="m-marca" class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1"></p>
-            <h2 id="m-titulo" class="text-xl font-bold text-black mb-1"></h2>
-            <p id="m-talla" class="text-gray-400 text-xs mb-3"></p>
-            <p id="m-precio" class="text-black font-bold text-3xl mb-6"></p>
-            <button onclick="comprarPorWA()" class="bg-[#E01E37] text-white w-full py-4 rounded-2xl font-bold text-lg shadow-lg">Preguntar por WhatsApp 💋</button>
+    <main class="max-w-7xl mx-auto px-4 py-6 md:py-12 md:mt-[80px]">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="galeria"></div>
+    </main>
+
+    <div id="modal" class="fixed inset-0 z-[250] hidden bg-black/95 backdrop-blur-xl flex-col md:flex-row items-center justify-center p-0 md:p-6 h-[100dvh]">
+        
+        <button onclick="cerrar()" class="absolute top-4 left-4 bg-white/10 border border-white/20 text-white px-5 py-2 rounded-full flex items-center gap-2 text-sm font-bold z-[260] hover:bg-white hover:text-black transition-colors backdrop-blur-md shadow-lg">
+            ✕ Salir
+        </button>
+
+        <div class="w-full h-full md:max-w-5xl md:h-[80vh] md:bg-[#111] md:rounded-[2rem] md:border md:border-white/10 flex flex-col md:flex-row overflow-hidden relative">
+            
+            <div class="relative w-full h-[55%] md:h-full md:w-1/2 bg-black flex items-center justify-center">
+                <img id="m-img" src="" class="w-full h-full object-contain">
+                <button onclick="cambiarPrenda(-1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md text-xl border border-white/10 hover:bg-white/20 z-10">‹</button>
+                <button onclick="cambiarPrenda(1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md text-xl border border-white/10 hover:bg-white/20 z-10">›</button>
+            </div>
+            
+            <div class="w-full h-[45%] md:h-full md:w-1/2 flex flex-col p-6 bg-gradient-to-b from-[#111] to-[#080808]">
+                <div class="overflow-y-auto no-scrollbar pb-4">
+                    <span id="m-marca" class="text-[10px] font-black tracking-[0.4em] text-[#E01E37] uppercase"></span>
+                    <h2 id="m-titulo" class="text-2xl md:text-4xl font-black leading-tight mt-1 mb-2 text-white"></h2>
+                    <div class="flex items-center gap-4 mt-2">
+                        <p id="m-precio" class="text-3xl font-light"></p>
+                        <div id="tag-oferta" class="discount-tag hidden">-25% OFF</div>
+                    </div>
+                    <p id="m-talla" class="text-[#888] font-mono tracking-widest uppercase text-sm mt-4"></p>
+                </div>
+                
+                <div class="mt-auto w-full pb-2">
+                    <button onclick="comprarPorWA()" class="w-full bg-[#E01E37] text-white py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-red-700 transition-all shadow-[0_0_20px_rgba(224,30,55,0.3)] active:scale-[0.98]">
+                        Preguntar por WhatsApp 💋
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         const prendas = [
-            { img: 'https://i.ibb.co/ZpSKqZgK/IMG-20260513-WA0009.jpg', titulo: 'Pantalon de cuero cafe', precio: 'Q50', talla: 'M', marca: 'OLD NAVI' },
-            { img: 'https://i.ibb.co/zhWLBtY8/IMG-20260513-WA0010.jpg', talla: 'S', precio: 'Q50', titulo: 'Pantalon de cuero negro', marca: 'OLD NAVI' },
+            { img: 'https://i.ibb.co/ZpSKqZgK/IMG-20260513-WA0009.jpg', titulo: 'Pantalón de cuero café', precio: 'Q50', talla: 'M', marca: 'OLD NAVY', cat: 'Mujer' },
+             { img: 'https://i.ibb.co/zhWLBtY8/IMG-20260513-WA0010.jpg', talla: 'S', precio: 'Q50', titulo: 'Pantalón de cuero negro', marca: 'OLD NAVY', cat: 'Mujer' },           
+            { img:
+'https://i.ibb.co/s9Hxf0wj/IMG-20260513-WA0015.jpg', titulo: 'Traje de baño negro', precio: 'Q25', talla: 'XS/S', marca: 'Marca', cat: 'Mujer' },
+            { img: 'https://i.ibb.co/8n5ZzFgy/IMG-20260513-WA0016.jpg', titulo: 'Short de lona', precio: 'Q30', talla: 'S', marca: 'Marca', cat: 'Mujer' },
+                { img: 'https://i.ibb.co/fY0zjq3f/IMG-20260513-WA0021.jpg', titulo: 'Estilo old money', precio: 'Q35', talla: 'S', marca: 'OLD NAVY', cat: 'Mujer' },
+                { img: 'https://i.ibb.co/LwDqhTj/IMG-20260513-WA0024.jpg', titulo: 'Suéter corto', precio: 'Q35', talla: 'S/M', marca: 'HOLLISTER', cat: 'Mujer', oferta: true },
+            { img: 'https://i.ibb.co/DfVgNqBp/IMG-20260531-WA0002.jpg', titulo: 'Blusa corte bardot', precio: 'Q25', talla: 'S', marca: 'SHEIN', cat: 'Mujer' },
+{ img:
+'https://i.ibb.co/JWDs6cMb/IMG-20260531-WA0003.jpg', titulo: 'Crop top', precio: 'Q25', talla: 'S', marca: 'SHEIN', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/N2ZKWymG/IMG-20260531-WA0004.jpg', titulo: 'Blusa', precio: 'Q30', talla: 'S', marca: 'H&M', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/Fkd1S7CQ/IMG-20260531-WA0005.jpg', titulo: 'Body', precio: 'Q40', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/W4PJLLVG/IMG-20260531-WA0006.jpg', titulo: 'Body blanco', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/LDtD7qBL/IMG-20260531-WA0007.jpg', titulo: 'Blusa descubierta de hombros', precio: 'Q35', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/8g5tM6S0/IMG-20260531-WA0008.jpg', titulo: 'Blusa con manga transparente', precio: 'Q35', talla: 'L', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/B5dnFCNn/IMG-20260531-WA0009.jpg', titulo: 'Body color cafe', precio: 'Q45', talla: 'S', marca: 'SHEIN', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/hJ0H7NYy/IMG-20260531-WA0010.jpg', titulo: 'T-Shirt unisex', precio: 'Q35', talla: 'XS/S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/0Rf1M7xq/IMG-20260531-WA0011.jpg', titulo: 'Blusa formal', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/gZzQxZhM/IMG-20260531-WA0012.jpg', titulo: 'Falda', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/TxzXVG20/IMG-20260531-WA0013.jpg', titulo: 'Crop top de malla', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' }, 
+{ img: 'https://i.ibb.co/38RSc9H/IMG-20260531-WA0014.jpg', titulo: 'Chaqueta beige', precio: 'Q50', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/HTshYCXB/IMG-20260531-WA0015.jpg', titulo: 'Pijama de satin', precio: 'Q30', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/yFbC6tJ0/IMG-20260531-WA0016.jpg', titulo: 'Blusa estampado print', precio: 'Q30', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/0yTPDwhZ/IMG-20260531-WA0017.jpg', titulo: 'Chaleco', precio: 'Q35', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/yndnc0J0/IMG-20260531-WA0018.jpg', titulo: 'Sueter corto', precio: 'Q45', talla: 'S', marca: 'FOREVER 21', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/TDy7c8Vm/IMG-20260531-WA0019.jpg', titulo: 'Top corto con tirantes envolventes', precio: 'Q50', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/gL29WL1w/IMG-20260531-WA0021.jpg', titulo: 'Vestido de lana', precio: 'Q45', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/3XCfSvf/IMG-20260531-WA0020.jpg', titulo: 'Blusa formal', precio: 'Q25', talla: 'S', marca: 'H&M', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/nsSHgBZd/IMG-20260531-WA0022.jpg', titulo: 'Vestido largo con doble abertura', precio: 'Q35', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/XxR7R6kJ/IMG-20260531-WA0023.jpg', titulo: 'Vestido casual o salida de baño', precio: 'Q30', talla: 'S', marca: 'ZARA', cat: 'Mujer' },
+{ img: 'https://i.ibb.co/8n1P3kG5/IMG-20260531-WA0024.jpg', titulo: 'Sueter corto', precio: 'Q25', talla: 'S', marca: 'H&M', cat: 'Mujer' },
+            { img: 'https://i.ibb.co/yBhHQDry/IMG-20260513-WA0029.jpg', titulo: 'Camisa tipo polo Nueva', precio: 'Q40', talla: 'M/L', marca: 'CALLAWAY', cat: 'Hombre', oferta: true  },
+            { img: 'https://i.ibb.co/xcLDYZ5/IMG-20260513-WA0030.jpg', titulo: 'Suéter para caballero', precio: 'Q35', talla: 'S/M', marca: 'OLD NAVY', cat: 'Hombre', oferta: true  },
+            { img: 'https://i.ibb.co/d0gjxc9X/IMG-20260513-WA0033.jpg', titulo: 'Chumpa para nena', precio: 'Q60', talla: '7/8 Años', marca: 'Nena', cat: 'Niñ@s' },{ img: 'https://i.ibb.co/0VRR5DHC/IMG-20260531-WA0026.jpg', titulo: 'Conjunto', precio: 'Q50', talla: 'L', marca: 'MARCA', cat: 'hombre' },
+{ img: 'https://i.ibb.co/5gqFh0mj/IMG-20260531-WA0027.jpg', titulo: 'Conjunto', precio: 'Q50', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/5xKC2p7V/IMG-20260531-WA0028.jpg', titulo: 'Camisa', precio: 'Q30', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/fdZX3VJS/IMG-20260531-WA0029.jpg', titulo: 'Playera', precio: 'Q25', talla: 'M', marca: 'OLD NAVY', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/HfmNTg3X/IMG-20260531-WA0030.jpg', titulo: 'Sudadero', precio: 'Q50', talla: 'S/M', marca: 'TOMY HILFIGER ', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/1G6mZ5g4/IMG-20260531-WA0031.jpg', titulo: 'Playera MY HERO ACADEMIA', precio: 'Q30', talla: 'M', marca: 'FUNIMATION', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/Q3YtnYmG/IMG-20260531-WA0032.jpg', titulo: 'Pleyera', precio: 'Q25', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/wZzBFBpP/IMG-20260531-WA0033.jpg', titulo: 'Gorro unisex', precio: 'Q30', talla: 'UNICA', marca: 'ADIDAS', cat: 'Hombre' },
+{ img: 'https://i.ibb.co/3byx4D0/IMG-20260531-WA0034.jpg', titulo: 'Camisa de niño', precio: 'Q25', talla: '5T', marca: 'OLD NAVY', cat: 'Niñ@s' },{ img: 'https://i.ibb.co/Q7Lzqsgt/IMG-20260531-WA0035.jpg', titulo: 'playera de niño', precio: 'Q30', talla: '4T', marca: 'ADIDAS', cat: 'Niñ@s' },
+{ img: 'https://i.ibb.co/9HtPK5NM/IMG-20260531-WA0036.jpg', titulo: 'Short', precio: 'Q30', talla: '8 a 12 Años', marca: 'MARCA', cat: 'Niñ@s'}, { img: 'https://i.ibb.co/pjx8NM4S/IMG-20260531-WA0037.jpg', titulo: 'Pantalon de Niña', precio: 'Q30', talla: '4Y', marca: 'SHEIN', cat: 'Niñ@s' },{ img: 'https://i.ibb.co/v47YKLj8/IMG-20260531-WA0038.jpg', titulo: 'Pans de niño ', precio: 'Q35', talla: '3 a 6 Años', marca: 'NIKE', cat: 'Niñ@s' },{ img: 'https://i.ibb.co/Y7hkVSqt/IMG-20260531-WA0039.jpg', titulo: 'Conjunto para niño', precio: 'Q35', talla: '4T', marca: 'H&M', cat: 'Niñ@s' },{ img: 'https://i.ibb.co/yJYd7sH/IMG-20260531-WA0040.jpg', titulo: 'Playeta de niño Baby Yoda', precio: 'Q20', talla: '3T', marca: 'MARCA', cat: 'Niñ@s' },
+{ img: 'https://i.ibb.co/qM1qTmhB/IMG-20260531-WA0041.jpg', titulo: 'Blusa de Nena', precio: 'Q20', talla: '5 A 6 Años', marca: 'ZARA', cat: 'Niñ@s' },
 
- { img: 'https://i.ibb.co/nsZf8BQw/IMG-20260513-WA0011.jpg', titulo: 'Pantalon de lona', precio: 'Q60', talla: 'S', marca: 'LEVI STRAUSS' },
-{ img: 'https://i.ibb.co/35s9BhSJ/IMG-20260513-WA0013.jpg', titulo: 'Blusa corte bardot', precio: 'Q25', talla: 'S/M', marca: 'MARCA' },
-{ img: 'https://i.ibb.co/n8nYrnLq/IMG-20260513-WA0014.jpg', titulo: 'Blusa con brillante', precio: 'VENDIDA', talla: 'S', marca: 'Marca' },
-{ img: 'https://i.ibb.co/s9Hxf0wj/IMG-20260513-WA0015.jpg', titulo: 'Traje de baño negro', precio: 'Q25', talla: 'XS/S', marca: 'Marca' },
-{ img: 'https://i.ibb.co/8n5ZzFgy/IMG-20260513-WA0016.jpg', titulo: 'Short de lona', precio: 'Q30', talla: 'S', marca: 'Marca' },
-{ img: 'https://i.ibb.co/cXg2zcd9/IMG-20260513-WA0018.jpg', titulo: 'Hoddie negro corto', precio: 'VENDIDA', talla: 'S/M', marca: 'WILD FABLE' },
-{ img: 'https://i.ibb.co/DqDmSSs/IMG-20260513-WA0019.jpg', titulo: 'Sueter casual', precio: 'VENDIDA', talla: 'S', marca: 'NEW DAY' },
-{ img: 'https://i.ibb.co/Qvgn64G5/IMG-20260513-WA0020.jpg', titulo: 'Estilo old money', precio: 'VENDIDA', talla: 'S', marca: ' Marca' },
-{ img: 'https://i.ibb.co/fY0zjq3f/IMG-20260513-WA0021.jpg', titulo: 'Estilo old money', precio: 'Q35', talla: 'S', marca: 'OLD NAVI' },
-{ img: 'https://i.ibb.co/hxsM3Txd/IMG-20260513-WA0022.jpg', titulo: 'Blusa  basica', precio: 'VENDIDA', talla: 'S/M', marca: 'FOREVER 21' },
-{ img: 'https://i.ibb.co/DPLhVHWh/IMG-20260513-WA0023.jpg', titulo: 'Blusa con escote bardot', precio: 'VENDIDA', talla: 'S', marca: 'Marca' },
-{ img: 'https://i.ibb.co/LwDqhTj/IMG-20260513-WA0024.jpg', titulo: 'Sueter corto', precio: 'Q35', talla: 'S/M', marca: 'HOLLISTER' },
-{ img: 'https://i.ibb.co/kgzyHBMy/IMG-20260513-WA0025.jpg', titulo: 'Blusa basica', precio: 'VENDIDA', talla: 'S/M', marca: 'Marca' },
-{ img: 'https://i.ibb.co/j9vxMPND/IMG-20260513-WA0026.jpg', titulo: 'Sueter estilo Old money casual', precio: 'VENDIDA', talla: 'S', marca: 'SINCERELY JULES' },
-{ img: 'https://i.ibb.co/GQMfthzg/IMG-20260513-WA0027.jpg', titulo: 'Blusa formal', precio: 'Q25', talla: 'S', marca: ' H&M' },
-{ img: 'https://i.ibb.co/twSTfCt3/IMG-20260513-WA0028.jpg', titulo: 'Blusa corte bardot ', precio: 'VENDIDA', talla: 'S', marca: 'Marca' },
-{ img: 'https://i.ibb.co/yBhHQDry/IMG-20260513-WA0029.jpg', titulo: 'Camisa tipo polo Nueva ', precio: 'Q40', talla: 'M/L', marca: ' CALLAWAY' },
-{ img: 'https://i.ibb.co/xcLDYZ5/IMG-20260513-WA0030.jpg', titulo: 'Sueter para caballero', precio: 'Q35', talla: 'S/M', marca: 'OLD NAVI' },
-{ img: 'https://i.ibb.co/ytntRSB/IMG-20260513-WA0031.jpg', titulo: 'Playera y suéter para caballero', precio: 'Q60', talla: 'S y M', marca: 'Tomy' },
-{ img: 'https://i.ibb.co/Mx3hBHn8/IMG-20260513-WA0032.jpg', titulo: ' Camisa', precio: 'VENDIDA', talla: 'M', marca: 'XIOS' },
-{ img: 'https://i.ibb.co/d0gjxc9X/IMG-20260513-WA0033.jpg', titulo: ' Chumpa para nena', precio: 'Q60', talla: '7/8 Años', marca: 'Marca' },
-{ img: 'https://i.ibb.co/MFPFfxd/IMG-20260513-WA0034.jpg', titulo: ' Chumpa Para Nena', precio: 'Q35', talla: '2T ', marca: 'CAT & JACK' },        ];
+            { img: 'https://i.ibb.co/MFPFfxd/IMG-20260513-WA0034.jpg', titulo: 'Chumpa Para Nena', precio: 'Q35', talla: '2T', marca: 'CAT & JACK', cat: 'Niñ@s' },
+        ];
 
         let indexActual = 0;
+        let currentFilter = 'Mujer';
         const bgMusic = document.getElementById('bg-music');
-        const clickSfx = document.getElementById('click-sound');
 
-        bgMusic.volume = 0.20; 
-        clickSfx.volume = 1.0; // Ajustado a 1.0 para representar el 100% que solicitaste anteriormente
-
-        document.addEventListener("visibilitychange", () => {
-            if (document.hidden) {
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden && !bgMusic.paused) {
                 bgMusic.pause();
-                document.getElementById('music-control').innerText = "🎵";
+                document.getElementById('music-control').style.opacity = '0.5';
             }
         });
 
-        function playClick() { 
-            clickSfx.currentTime = 0; 
-            clickSfx.play().catch(() => {}); 
-        }
-
-        function toggleMusic() {
-            if (bgMusic.paused) { 
-                bgMusic.play(); 
-                document.getElementById('music-control').innerText = "🔊"; 
-            } else { 
-                bgMusic.pause(); 
-                document.getElementById('music-control').innerText = "🎵"; 
-            }
-        }
-
-        const galeria = document.getElementById('galeria');
-        prendas.forEach((p, i) => {
-            galeria.innerHTML += `
-                <div class="product-card relative shadow-sm" onclick="abrirModal(${i})">
-                    <div class="tag-nuevo">Nuevo</div>
-                    <img src="${p.img}" class="w-full aspect-[3/4] object-cover">
-                    <div class="p-3 bg-white text-center">
-                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">${p.marca}</p>
-                        <h3 class="text-xs font-semibold text-gray-800 truncate">${p.titulo}</h3>
-                        <div class="flex items-center justify-between mt-2">
-                            <p class="font-bold text-black text-sm">${p.precio}</p>
-                            <span class="talla-badge">Talla ${p.talla}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
+        /* DISPARADOR ULTRA-RÁPIDO QUE EVITA LA PANTALLA NEGRA */
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('intro-bg').style.opacity = '0';
+                document.getElementById('animated-logo').style.opacity = '0';
+                document.getElementById('hero').style.opacity = '1';
+                setTimeout(() => {
+                    document.getElementById('intro-bg').style.display = 'none';
+                    document.getElementById('animated-logo').style.display = 'none';
+                }, 600);
+            }, 1800); // Muestra tu marca 1.8 segundos exactos en el centro y se desvanece suavemente
         });
 
-        function abrirModal(index) {
-            playClick();
-            indexActual = index;
-            actualizarModal();
-            document.getElementById('modal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function actualizarModal() {
-            const p = prendas[indexActual];
-            document.getElementById('m-img').src = p.img;
-            document.getElementById('m-marca').innerText = p.marca;
-            document.getElementById('m-titulo').innerText = p.titulo;
-            document.getElementById('m-talla').innerText = "Talla disponible: " + p.talla;
-            document.getElementById('m-precio').innerText = p.precio;
-        }
-
-        function cambiarPrenda(direccion) {
-            playClick();
-            indexActual += direccion;
-            if (indexActual < 0) indexActual = prendas.length - 1;
-            if (indexActual >= prendas.length) indexActual = 0;
-            actualizarModal();
-        }
-
-        function cerrar() { 
-            playClick(); 
-            document.getElementById('modal').style.display = 'none'; 
-            document.body.style.overflow = 'auto'; 
-        }
-
-                 function comprarPorWA() {
-            const p = prendas[indexActual];
-            const mensaje = "¡Hola Val_Store! 💋 Me interesa esta prenda:\n\n" + 
-                            "📌 Producto: " + p.titulo + "\n" +
-                            "💰 Precio: " + p.precio + "\n" +
-                            "📏 Talla: " + p.talla + "\n" + 
-                            "🖼️ Imagen: " + p.img + "\n\n" + // <--- ESTA ES LA LÍNEA QUE FALTA
-                            "¿Sigue disponible?";
+        function startExperience() {
+            document.getElementById('hero').style.transform = 'translateY(-100%)';
+            document.getElementById('hero').style.pointerEvents = 'none'; 
             
-            window.location.href = "https://wa.me/50240283552?text=" + encodeURIComponent(mensaje);
-        }
-
-
-
-        let touchstartX = 0;
-        let touchendX = 0;
-        document.getElementById('modal').addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
-        document.getElementById('modal').addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            if (touchstartX - touchendX > 60) cambiarPrenda(1); 
-            if (touchendX - touchstartX > 60) cambiarPrenda(-1); 
-        });
-    </script>
-</body>
-</html>
+            document.getElementById('main-nav').style.opacity = '1';
+            document.getElementById('mobile-nav').style.opacity = '1';
+            
+            bgMusic.play().catch(e => console.log("Permiso de audio bloqueado", e));
+            renderGaleria();
