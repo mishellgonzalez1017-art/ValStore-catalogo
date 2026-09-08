@@ -86,7 +86,12 @@
             100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
         }
         .anim-pop {
-            animation: imagePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: imagePop 0.45s ease-in-out forwards;
+            will-change: opacity, transform, filter;
+        }
+
+        #m-img {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         /* Ocultar barra de scroll en el modal en móviles */
@@ -593,6 +598,7 @@
                 mensaje += `   - Marca: ${item.marca}\n`;
                 mensaje += `   - Talla: ${item.talla}\n`;
                 mensaje += `   - Precio: ${item.precio}\n\n`;
+                mensaje += `   - Imagen / ID: ${item.img}\n\n`;
                 
                 const valor = parseInt(item.precio.replace(/[^0-9]/g, '')) || 0;
                 total += valor;
