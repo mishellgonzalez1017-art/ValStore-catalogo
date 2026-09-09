@@ -563,7 +563,7 @@
                 const globalIndex = prendas.indexOf(p);
                 const esVendida = p.precio.toUpperCase().includes('VENDID');
                 container.innerHTML += `
-                    <div class="product-card group reveal-up" style="animation-delay: ${i*0.08}s" onclick="abrirModal(${globalIndex})">
+                    <div class="product-card group reveal-up" data-id="${p.id}" style="animation-delay: ${i*0.08}s" onclick="abrirModal(${globalIndex})">
                         <div class="relative overflow-hidden aspect-[3/4]">
                             <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${esVendida ? 'opacity-40 grayscale' : ''}">
                             ${p.oferta ? '<div class="absolute top-2 left-2 discount-tag">OFERTA</div>' : ''}
