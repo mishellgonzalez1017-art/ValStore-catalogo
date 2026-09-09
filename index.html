@@ -54,30 +54,36 @@
             will-change: transform;
         }
         .falling-flag {
-            width: 34px; height: 22px; display: flex; opacity: 0.8;
-            background: linear-gradient(90deg, #4a9bd5 0 33%, #fff 33% 67%, #4a9bd5 67%);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            width: 72px; height: 47px; display: block; opacity: 1;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.45));
             transform-origin: center;
         }
-        .falling-flag::after {
-            content: '✿'; color: #6d8f51; font-size: 10px; line-height: 22px;
-            width: 100%; text-align: center;
+        .falling-flag img {
+            display: block; width: 100%; height: 100%;
+            transform-origin: left center;
+            animation: flagWave 1.8s ease-in-out infinite;
         }
         .falling-torch {
-            width: 12px; height: 42px; border-radius: 3px 3px 7px 7px;
-            background: linear-gradient(90deg, #6a3217, #d89135 50%, #4a210f);
-            box-shadow: 0 0 16px rgba(255, 133, 22, 0.45);
+            width: 38px; height: 76px; display: block;
+            filter: drop-shadow(0 0 10px rgba(255, 133, 22, 0.6));
             transform-origin: center top;
         }
-        .falling-torch::before {
-            content: ''; position: absolute; width: 22px; height: 30px; left: -5px; top: -24px;
-            border-radius: 55% 45% 55% 45%; background: #ff8a16;
-            box-shadow: 0 0 12px #ffb52e, 0 0 24px rgba(255, 92, 0, 0.65);
+        .falling-torch svg {
+            display: block; width: 100%; height: 100%; overflow: visible;
+        }
+        .torch-flame {
+            transform-box: fill-box; transform-origin: center bottom;
             animation: flame 0.55s ease-in-out infinite alternate;
         }
-        .falling-torch::after {
-            content: '·  ˚'; position: absolute; color: #ffc34d; font-size: 18px;
-            left: -13px; top: -37px; animation: sparks 0.9s ease-in-out infinite alternate;
+        .torch-spark { animation: sparks 0.9s ease-in-out infinite alternate; }
+        .product-size {
+            color: #fff; font-size: 0.9rem; font-weight: 700;
+            letter-spacing: 0.08em; text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+        @media (min-width: 768px) { .product-size { font-size: 1rem; } }
+        @keyframes flagWave {
+            0%, 100% { transform: skewY(0deg) scaleX(1); }
+            50% { transform: skewY(2deg) scaleX(0.94); }
         }
         @keyframes fall {
             0% { transform: translate3d(0, -15vh, 0) rotate(-12deg); }
@@ -91,7 +97,7 @@
             to { transform: translate(8px, -9px); opacity: 0.35; }
         }
         @media (prefers-reduced-motion: reduce) {
-            .falling-flag, .falling-torch, .falling-torch::before, .falling-torch::after { animation-play-state: paused; }
+            .falling-flag, .falling-flag img, .falling-torch, .torch-flame, .torch-spark { animation-play-state: paused; }
         }
 
         /* --- UI COMPONENTS --- */
@@ -185,15 +191,18 @@
     <section id="hero">
         <div class="glow-hero"></div>
         <div class="patrio-rain" aria-hidden="true">
-            <span class="falling-flag" style="--left: 7%; --duration: 13s; --delay: -2s"></span>
-            <span class="falling-flag" style="--left: 24%; --duration: 16s; --delay: -9s"></span>
-            <span class="falling-flag" style="--left: 48%; --duration: 14s; --delay: -5s"></span>
-            <span class="falling-flag" style="--left: 72%; --duration: 17s; --delay: -12s"></span>
-            <span class="falling-flag" style="--left: 91%; --duration: 15s; --delay: -7s"></span>
-            <span class="falling-torch" style="--left: 14%; --duration: 18s; --delay: -8s"></span>
-            <span class="falling-torch" style="--left: 39%; --duration: 20s; --delay: -14s"></span>
-            <span class="falling-torch" style="--left: 63%; --duration: 17s; --delay: -3s"></span>
-            <span class="falling-torch" style="--left: 84%; --duration: 21s; --delay: -11s"></span>
+            <svg width="0" height="0" aria-hidden="true"><defs>
+                <symbol id="torch-design" viewBox="0 0 38 76"><defs><linearGradient id="wood1" x1="0" x2="1"><stop stop-color="#542510"/><stop offset=".5" stop-color="#b86a2b"/><stop offset="1" stop-color="#4a1d0c"/></linearGradient><linearGradient id="fire1" x1="0" y1="1" x2=".5" y2="0"><stop stop-color="#ff5a00"/><stop offset=".55" stop-color="#ffae19"/><stop offset="1" stop-color="#fff1a6"/></linearGradient></defs><path d="M16 36h6v35h-6z" fill="url(#wood1)" stroke="#2b1309" stroke-width="1"/><path d="M11 34h16l-2 7H13z" fill="#9c6a32" stroke="#e0b65c" stroke-width="1"/><path d="M13 33h12l-2-5h-8z" fill="#5f3b20" stroke="#c58d45" stroke-width="1"/><path class="torch-flame" d="M19 31 C13 25, 18 21, 20 14 C26 21, 27 26, 23 31 C27 28, 29 24, 28 21 C33 29, 27 35, 22 35 C18 35, 16 33, 19 31 Z" fill="url(#fire1)" stroke="#ff7a00" stroke-width=".8"/><circle class="torch-spark" cx="11" cy="18" r="1" fill="#ffe66d"/><circle class="torch-spark" cx="29" cy="13" r=".8" fill="#ffb52e"/><path class="torch-spark" d="M9 25l2-2M30 23l2-2" stroke="#ffd45a" stroke-width="1" stroke-linecap="round"/></symbol>
+            </defs></svg>
+            <span class="falling-flag" style="--left: 7%; --duration: 13s; --delay: -2s"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera oficial de Guatemala"></span>
+            <span class="falling-flag" style="--left: 24%; --duration: 16s; --delay: -9s"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera oficial de Guatemala"></span>
+            <span class="falling-flag" style="--left: 48%; --duration: 14s; --delay: -5s"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera oficial de Guatemala"></span>
+            <span class="falling-flag" style="--left: 72%; --duration: 17s; --delay: -12s"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera oficial de Guatemala"></span>
+            <span class="falling-flag" style="--left: 91%; --duration: 15s; --delay: -7s"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera oficial de Guatemala"></span>
+            <span class="falling-torch" style="--left: 14%; --duration: 18s; --delay: -8s"><svg viewBox="0 0 38 76"><use href="#torch-design"/></svg></span>
+            <span class="falling-torch" style="--left: 39%; --duration: 20s; --delay: -14s"><svg viewBox="0 0 38 76"><use href="#torch-design"/></svg></span>
+            <span class="falling-torch" style="--left: 63%; --duration: 17s; --delay: -3s"><svg viewBox="0 0 38 76"><use href="#torch-design"/></svg></span>
+            <span class="falling-torch" style="--left: 84%; --duration: 21s; --delay: -11s"><svg viewBox="0 0 38 76"><use href="#torch-design"/></svg></span>
         </div>
         <button onclick="startExperience()" class="relative z-10 bg-white text-black px-12 py-4 rounded-full font-black text-[13px] uppercase tracking-widest hover:bg-[#E01E37] hover:text-white transition-all duration-500 transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)] mt-12">
             Explorar Catálogo
@@ -568,7 +577,7 @@
                                 <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${p.id}</span>
                             </div>
                             <div class="flex justify-between items-center mt-1">
-                                <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${p.talla}</span>
+                                <span class="product-size font-mono">${p.talla}</span>
                             </div>
                         </div>
                     </div>
