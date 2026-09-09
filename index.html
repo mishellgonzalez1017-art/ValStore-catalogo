@@ -36,12 +36,62 @@
             position: fixed; inset: 0; z-index: 100;
             background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 1s ease;
+            opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease;
         }
         /* Brillo de fondo */
         .glow-hero {
             position: absolute; width: 60vw; height: 60vw; max-width: 500px; max-height: 500px;
             background: var(--brand-red); filter: blur(150px); opacity: 0.15;
+        }
+
+        /* Elementos patrios decorativos de la pantalla de entrada */
+        .patrio-rain {
+            position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+        }
+        .falling-flag, .falling-torch {
+            position: absolute; top: -12vh; left: var(--left);
+            animation: fall var(--duration) linear var(--delay) infinite;
+            will-change: transform;
+        }
+        .falling-flag {
+            width: 34px; height: 22px; display: flex; opacity: 0.8;
+            background: linear-gradient(90deg, #4a9bd5 0 33%, #fff 33% 67%, #4a9bd5 67%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            transform-origin: center;
+        }
+        .falling-flag::after {
+            content: '✿'; color: #6d8f51; font-size: 10px; line-height: 22px;
+            width: 100%; text-align: center;
+        }
+        .falling-torch {
+            width: 12px; height: 42px; border-radius: 3px 3px 7px 7px;
+            background: linear-gradient(90deg, #6a3217, #d89135 50%, #4a210f);
+            box-shadow: 0 0 16px rgba(255, 133, 22, 0.45);
+            transform-origin: center top;
+        }
+        .falling-torch::before {
+            content: ''; position: absolute; width: 22px; height: 30px; left: -5px; top: -24px;
+            border-radius: 55% 45% 55% 45%; background: #ff8a16;
+            box-shadow: 0 0 12px #ffb52e, 0 0 24px rgba(255, 92, 0, 0.65);
+            animation: flame 0.55s ease-in-out infinite alternate;
+        }
+        .falling-torch::after {
+            content: '·  ˚'; position: absolute; color: #ffc34d; font-size: 18px;
+            left: -13px; top: -37px; animation: sparks 0.9s ease-in-out infinite alternate;
+        }
+        @keyframes fall {
+            0% { transform: translate3d(0, -15vh, 0) rotate(-12deg); }
+            45% { transform: translate3d(34px, 48vh, 0) rotate(10deg); }
+            100% { transform: translate3d(-28px, 118vh, 0) rotate(-8deg); }
+        }
+        @keyframes flame {
+            to { transform: rotate(8deg) scale(0.86, 1.12); opacity: 0.82; }
+        }
+        @keyframes sparks {
+            to { transform: translate(8px, -9px); opacity: 0.35; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .falling-flag, .falling-torch, .falling-torch::before, .falling-torch::after { animation-play-state: paused; }
         }
 
         /* --- UI COMPONENTS --- */
@@ -134,6 +184,17 @@
 
     <section id="hero">
         <div class="glow-hero"></div>
+        <div class="patrio-rain" aria-hidden="true">
+            <span class="falling-flag" style="--left: 7%; --duration: 13s; --delay: -2s"></span>
+            <span class="falling-flag" style="--left: 24%; --duration: 16s; --delay: -9s"></span>
+            <span class="falling-flag" style="--left: 48%; --duration: 14s; --delay: -5s"></span>
+            <span class="falling-flag" style="--left: 72%; --duration: 17s; --delay: -12s"></span>
+            <span class="falling-flag" style="--left: 91%; --duration: 15s; --delay: -7s"></span>
+            <span class="falling-torch" style="--left: 14%; --duration: 18s; --delay: -8s"></span>
+            <span class="falling-torch" style="--left: 39%; --duration: 20s; --delay: -14s"></span>
+            <span class="falling-torch" style="--left: 63%; --duration: 17s; --delay: -3s"></span>
+            <span class="falling-torch" style="--left: 84%; --duration: 21s; --delay: -11s"></span>
+        </div>
         <button onclick="startExperience()" class="relative z-10 bg-white text-black px-12 py-4 rounded-full font-black text-[13px] uppercase tracking-widest hover:bg-[#E01E37] hover:text-white transition-all duration-500 transform hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)] mt-12">
             Explorar Catálogo
         </button>
@@ -402,7 +463,7 @@
         ];
 
         prendas.forEach((prenda, index) => {
-            prenda.id = `PRENDA-${String(index + 1).padStart(3, '0')}`;
+            prenda.id = `#${String(index + 1).padStart(3, '0')}`;
         });
 
         let indexActual = 0;
@@ -456,8 +517,11 @@
         });
 
         function startExperience() {
-            document.getElementById('hero').style.transform = 'translateY(-100%)';
-            document.getElementById('hero').style.pointerEvents = 'none'; 
+            const hero = document.getElementById('hero');
+            hero.style.opacity = '0';
+            hero.style.transform = 'translateY(-2%)';
+            hero.style.pointerEvents = 'none';
+            setTimeout(() => hero.style.display = 'none', 800);
             
             document.getElementById('main-nav').style.opacity = '1';
             document.getElementById('mobile-nav').style.opacity = '1';
@@ -501,6 +565,9 @@
                             <h3 class="text-xs md:text-sm font-bold truncate mt-1">${p.titulo}</h3>
                             <div class="flex justify-between items-center mt-2 md:mt-4">
                                 <span class="font-black text-sm md:text-lg ${esVendida ? 'text-red-500 font-medium' : ''}">${p.precio}</span>
+                                <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${p.id}</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-1">
                                 <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${p.talla}</span>
                             </div>
                         </div>
@@ -651,8 +718,8 @@
 
             const catalogIndex = prendas.findIndex(prenda => prenda.img === item.img);
             return catalogIndex >= 0
-                ? `PRENDA-${String(catalogIndex + 1).padStart(3, '0')}`
-                : 'PRENDA-SIN-REGISTRO';
+                ? `#${String(catalogIndex + 1).padStart(3, '0')}`
+                : '#000';
         }
 
         function enviarPedidoWhatsApp() {
@@ -661,10 +728,13 @@
             let mensaje = 'Hola me interesa la siguiente selección de prendas 💋\n\n';
             let total = 0;
 
-            carrito.forEach(item => {
-                mensaje += `🛍️ Producto: ${item.titulo}\n`;
-                mensaje += `🏷️ Código: ${obtenerCodigoPrenda(item)}\n`;
-                mensaje += `🖼️ Imagen: ${item.img}\n\n`;
+            carrito.forEach((item, itemIndex) => {
+                mensaje += `${itemIndex + 1}. 📌 ${item.titulo}\n`;
+                mensaje += `- ID: ${obtenerCodigoPrenda(item)}\n`;
+                mensaje += `- Marca: ${item.marca}\n`;
+                mensaje += `- Talla: ${item.talla}\n`;
+                mensaje += `- Precio: ${item.precio}\n`;
+                mensaje += `- Imagen: ${item.img}\n\n`;
                 
                 const valor = parseInt(item.precio.replace(/[^0-9]/g, '')) || 0;
                 total += valor;
