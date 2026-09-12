@@ -294,6 +294,47 @@
 
         /* Ocultar barra de scroll en el modal en móviles */
         .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        @media (max-width: 768px) {
+            #hero { padding: 1rem; box-sizing: border-box; }
+            .intro-stage { width: 100%; max-width: 100%; }
+            .intro-panel {
+                width: min(100%, 22rem); max-width: 100%; box-sizing: border-box;
+                padding: 2rem 1.25rem 1.75rem;
+            }
+            .intro-brand { max-width: 100%; box-sizing: border-box; }
+            .intro-brand .brand-wordmark {
+                max-width: 100%; box-sizing: border-box;
+                font-size: clamp(1.8rem, 8vw, 3.5rem); white-space: nowrap;
+            }
+            .intro-button { max-width: 100%; padding-left: 1.75rem; padding-right: 1.75rem; }
+
+            #main-nav { padding: 8px 12px; box-sizing: border-box; }
+            #main-nav > div {
+                display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+                gap: 8px; width: 100%; max-width: none;
+            }
+            #main-nav .brand-logo {
+                order: 1; flex: 0 1 auto; width: auto; max-width: 100%;
+                min-width: 0; font-size: 1.1rem; white-space: nowrap;
+            }
+            #main-nav > div > .flex.items-center {
+                order: 2; flex: 1 1 100%; min-width: 0; width: 100%;
+                display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+            }
+            #main-nav .catalog-search {
+                flex: 1 1 auto; min-width: 130px; max-width: none;
+                padding: 6px 10px; font-size: 0.85rem; box-sizing: border-box;
+            }
+            #main-nav .catalog-search input { font-size: 0.85rem; min-width: 0; }
+            #main-nav > div > .flex.items-center > a,
+            #main-nav #music-control {
+                flex: 0 0 auto; min-width: 36px; min-height: 36px;
+                display: inline-flex; align-items: center; justify-content: center;
+                padding: 8px; box-sizing: border-box;
+            }
+            #main-nav #music-control { padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.2); }
+        }
     </style>
 </head>
 <body>
