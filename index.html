@@ -24,13 +24,7 @@
             88% { transform: translateY(0) rotate(-1deg); }
         }
         @keyframes brandShine { to { background-position: -220% center; } }
-        .kiss-mark { display: inline-block; position: relative; animation: brandKissPulse 4.8s ease-in-out infinite; }
         .header-kiss { cursor: pointer; }
-        .kiss-emoji {
-            display: inline-block; cursor: pointer; user-select: none;
-            animation: kissPulse 2s infinite ease-in-out;
-            transition: transform 0.2s;
-        }
         .kiss-o {
             display: inline-block; color: #e60023; -webkit-text-fill-color: #e60023;
             background: none; opacity: 1; cursor: pointer; transform-origin: center;
@@ -39,47 +33,15 @@
             filter: drop-shadow(0 2px 4px rgba(230,0,35,0.28));
         }
         .kiss-o.intro-title-letter { animation: kissPulse 2s infinite ease-in-out; }
-        .kiss-mark::after, .kiss-mark::before {
-            content: '♥'; position: absolute; color: #E01E37; font-size: 0.34em; opacity: 0;
-            pointer-events: none; animation: kissHeart 4.8s ease-out infinite;
-        }
-        .kiss-mark::before { top: 4%; right: -35%; }
-        .kiss-mark::after { top: 28%; left: -28%; animation-delay: 0.18s; }
-        @keyframes brandKissPulse {
-            0%, 78%, 100% { transform: scale(1) rotate(0deg); }
-            82% { transform: scale(1.12) rotate(-5deg); }
-            86% { transform: scale(0.98) rotate(3deg); }
-            90% { transform: scale(1.06) rotate(0deg); }
-        }
         @keyframes kissPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.3) rotate(-5deg); }
-        }
-        @keyframes kissHeart {
-            0%, 78% { opacity: 0; transform: translate(0, 8px) scale(0.4); }
-            83% { opacity: 1; }
-            100% { opacity: 0; transform: translate(12px, -22px) scale(1); }
         }
 
         /* --- NUEVA ANIMACIÓN INICIAL ULTRA CORREGIDA Y COMPATIBLE --- */
         #intro-bg {
             position: fixed; inset: 0; background: #17232c; z-index: 150;
             transition: opacity 0.6s ease-in-out;
-        }
-
-        #animated-logo {
-            position: fixed; z-index: 200; white-space: nowrap;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 3rem; opacity: 0;
-            animation: elegantFade 2.2s ease-in-out forwards;
-        }
-        @media (min-width: 768px) { #animated-logo { font-size: 5rem; } }
-
-        @keyframes elegantFade {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
-            25% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            75% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05); }
         }
 
         /* --- PANTALLA HERO --- */
@@ -113,6 +75,11 @@
         .intro-brand .brand-wordmark {
             background: none; -webkit-text-fill-color: #18242c; color: #18242c;
             text-shadow: 0 3px 0 rgba(255,255,255,0.7), 0 8px 18px rgba(20,37,49,0.2);
+        }
+        .intro-title {
+            display: block; visibility: visible; opacity: 1; position: relative; z-index: 4;
+            width: 100%; max-width: 100%; box-sizing: border-box; text-align: center;
+            color: #18242c; -webkit-text-fill-color: #18242c;
         }
         .intro-title-letter { display: inline-block; animation: introLetterWave 3.8s ease-in-out infinite; }
         @keyframes introLetterWave {
@@ -297,7 +264,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .brand-bounce, .kiss-mark, .kiss-mark::before, .kiss-mark::after, .cart-flight { animation: none; }
+            .brand-bounce, .cart-flight { animation: none; }
         }
 
         /* Ocultar barra de scroll en el modal en móviles */
@@ -362,10 +329,6 @@
 
     <audio id="bg-music" preload="auto"></audio>
 
-    <div id="animated-logo" class="brand-wordmark font-bold text-white">
-        VAL_ST<span class="kiss-o">💋</span>RE
-    </div>
-
     <div id="intro-bg"></div>
 
     <section id="hero">
@@ -391,7 +354,7 @@
         <div class="intro-stage" id="intro-stage">
             <div class="intro-panel">
                 <div class="intro-brand">
-                    <div class="brand-wordmark text-4xl md:text-6xl font-bold" aria-label="VAL_ST💋RE">
+                    <div class="brand-wordmark intro-title text-4xl md:text-6xl font-bold" aria-label="VAL_ST💋RE">
                         <span class="intro-title-letter" style="animation-delay: 0s">V</span><span class="intro-title-letter" style="animation-delay: 0.08s">A</span><span class="intro-title-letter" style="animation-delay: 0.16s">L</span><span class="intro-title-letter" style="animation-delay: 0.24s">_</span><span class="intro-title-letter" style="animation-delay: 0.32s">S</span><span class="intro-title-letter" style="animation-delay: 0.4s">T</span><span class="kiss-o intro-title-letter" style="animation-delay: 0.48s">💋</span><span class="intro-title-letter" style="animation-delay: 0.56s">R</span><span class="intro-title-letter" style="animation-delay: 0.64s">E</span>
                     </div>
                 </div>
@@ -788,11 +751,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('intro-bg').style.opacity = '0';
-                document.getElementById('animated-logo').style.opacity = '0';
                 document.getElementById('hero').style.opacity = '1';
                 setTimeout(() => {
                     document.getElementById('intro-bg').style.display = 'none';
-                    document.getElementById('animated-logo').style.display = 'none';
                 }, 600);
             }, 1800);
             actualizarUI_Carrito();
