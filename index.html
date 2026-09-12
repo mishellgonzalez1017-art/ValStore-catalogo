@@ -166,7 +166,7 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop><source src="musica.mp3" type="audio/mpeg"></audio>
+    <audio id="bg-music" loop></audio>
 
     <div id="animated-logo" class="font-black text-white tracking-tighter">
         VAL_STORE<span class="text-[#E01E37]">💋</span>
@@ -460,6 +460,9 @@
         let currentFilter = 'Mujer';
         let carrito = JSON.parse(localStorage.getItem('val_store_cart')) || [];
         const bgMusic = document.getElementById('bg-music');
+        const canciones = ['musica/cancion1.mp3'];
+        const cancionAleatoria = canciones[Math.floor(Math.random() * canciones.length)];
+        bgMusic.src = cancionAleatoria;
 
         function lanzarParticulas(iconId, symbol) {
             const icon = document.getElementById(iconId);
