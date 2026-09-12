@@ -130,13 +130,6 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .patrio-centerpiece {
-            position: absolute; top: 50%; left: 50%; width: min(24vw, 210px); aspect-ratio: 3 / 2;
-            transform: translate(-50%, -50%) translateZ(-30px) rotateY(-8deg);
-            opacity: 0.38; filter: drop-shadow(0 12px 18px rgba(61,87,105,0.28));
-        }
-        .patrio-centerpiece img { width: 100%; height: 100%; object-fit: contain; }
-
         /* Elementos patrios decorativos de la pantalla de entrada */
         .patrio-rain {
             position: absolute; inset: 0; overflow: hidden; pointer-events: none;
@@ -363,9 +356,6 @@
     <section id="hero">
         <div class="glow-hero"></div>
         <div class="tematica-patria" aria-hidden="true">
-            <div class="patrio-centerpiece">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg" alt="Bandera de Guatemala con escudo nacional">
-            </div>
             <div class="patrio-rain">
             <svg width="0" height="0" aria-hidden="true"><defs>
                 <symbol id="torch-design" viewBox="0 0 38 76"><defs><linearGradient id="wood1" x1="0" x2="1"><stop stop-color="#542510"/><stop offset=".5" stop-color="#b86a2b"/><stop offset="1" stop-color="#4a1d0c"/></linearGradient><linearGradient id="fire1" x1="0" y1="1" x2=".5" y2="0"><stop stop-color="#ff5a00"/><stop offset=".55" stop-color="#ffae19"/><stop offset="1" stop-color="#fff1a6"/></linearGradient></defs><path d="M16 36h6v35h-6z" fill="url(#wood1)" stroke="#2b1309" stroke-width="1"/><path d="M11 34h16l-2 7H13z" fill="#9c6a32" stroke="#e0b65c" stroke-width="1"/><path d="M13 33h12l-2-5h-8z" fill="#5f3b20" stroke="#c58d45" stroke-width="1"/><path class="torch-flame" d="M19 31 C13 25, 18 21, 20 14 C26 21, 27 26, 23 31 C27 28, 29 24, 28 21 C33 29, 27 35, 22 35 C18 35, 16 33, 19 31 Z" fill="url(#fire1)" stroke="#ff7a00" stroke-width=".8"/><circle class="torch-spark" cx="11" cy="18" r="1" fill="#ffe66d"/><circle class="torch-spark" cx="29" cy="13" r=".8" fill="#ffb52e"/><path class="torch-spark" d="M9 25l2-2M30 23l2-2" stroke="#ffd45a" stroke-width="1" stroke-linecap="round"/></symbol>
