@@ -180,7 +180,7 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop><source src="musica.mp3" type="audio/mpeg"></audio>
+    <audio id="bg-music" preload="auto"></audio>
 
     <div id="animated-logo" class="font-black text-white tracking-tighter">
         VAL_STORE<span class="text-[#E01E37]">💋</span>
@@ -479,6 +479,28 @@
         let currentFilter = 'Mujer';
         let carrito = JSON.parse(localStorage.getItem('val_store_cart')) || [];
         const bgMusic = document.getElementById('bg-music');
+        const canciones = [
+            'musica/cancion1.mp3',
+            'musica/cancion2.mp3',
+            'musica/cancion3.mp3'
+        ];
+        let cancionesDisponibles = [...canciones];
+        let indiceCancion = Math.floor(Math.random() * cancionesDisponibles.length);
+        [cancionesDisponibles[0], cancionesDisponibles[indiceCancion]] = [cancionesDisponibles[indiceCancion], cancionesDisponibles[0]];
+        indiceCancion = 0;
+        bgMusic.src = cancionesDisponibles[indiceCancion];
+
+        function reproducirSiguiente() {
+            indiceCancion++;
+            if (indiceCancion >= cancionesDisponibles.length) {
+                cancionesDisponibles = [...canciones].sort(() => Math.random() - 0.5);
+                indiceCancion = 0;
+            }
+            bgMusic.src = cancionesDisponibles[indiceCancion];
+            bgMusic.play().catch(e => console.log("Permiso de audio bloqueado", e));
+        }
+
+        bgMusic.addEventListener('ended', reproducirSiguiente);
 
         function lanzarParticulas(iconId, symbol) {
             const icon = document.getElementById(iconId);
