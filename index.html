@@ -31,6 +31,14 @@
             animation: kissPulse 2s infinite ease-in-out;
             transition: transform 0.2s;
         }
+        .kiss-o {
+            display: inline-block; color: #e60023; -webkit-text-fill-color: #e60023;
+            background: none; opacity: 1; cursor: pointer; transform-origin: center;
+            user-select: none; font-style: normal; line-height: 1;
+            animation: kissPulse 2s infinite ease-in-out;
+            filter: drop-shadow(0 2px 4px rgba(230,0,35,0.28));
+        }
+        .kiss-o.intro-title-letter { animation: kissPulse 2s infinite ease-in-out; }
         .kiss-mark::after, .kiss-mark::before {
             content: '♥'; position: absolute; color: #E01E37; font-size: 0.34em; opacity: 0;
             pointer-events: none; animation: kissHeart 4.8s ease-out infinite;
@@ -355,7 +363,7 @@
     <audio id="bg-music" preload="auto"></audio>
 
     <div id="animated-logo" class="brand-wordmark font-bold text-white">
-        VAL_STORE<span class="kiss-mark text-[#E01E37]">💋</span>
+        VAL_ST<span class="kiss-o">💋</span>RE
     </div>
 
     <div id="intro-bg"></div>
@@ -383,10 +391,9 @@
         <div class="intro-stage" id="intro-stage">
             <div class="intro-panel">
                 <div class="intro-brand">
-                    <div class="brand-wordmark text-4xl md:text-6xl font-bold" aria-label="VAL_STORE">
-                        <span class="intro-title-letter" style="animation-delay: 0s">V</span><span class="intro-title-letter" style="animation-delay: 0.08s">A</span><span class="intro-title-letter" style="animation-delay: 0.16s">L</span><span class="intro-title-letter" style="animation-delay: 0.24s">_</span><span class="intro-title-letter" style="animation-delay: 0.32s">S</span><span class="intro-title-letter" style="animation-delay: 0.4s">T</span><span class="intro-title-letter" style="animation-delay: 0.48s">O</span><span class="intro-title-letter" style="animation-delay: 0.56s">R</span><span class="intro-title-letter" style="animation-delay: 0.64s">E</span>
+                    <div class="brand-wordmark text-4xl md:text-6xl font-bold" aria-label="VAL_ST💋RE">
+                        <span class="intro-title-letter" style="animation-delay: 0s">V</span><span class="intro-title-letter" style="animation-delay: 0.08s">A</span><span class="intro-title-letter" style="animation-delay: 0.16s">L</span><span class="intro-title-letter" style="animation-delay: 0.24s">_</span><span class="intro-title-letter" style="animation-delay: 0.32s">S</span><span class="intro-title-letter" style="animation-delay: 0.4s">T</span><span class="kiss-o intro-title-letter" style="animation-delay: 0.48s">💋</span><span class="intro-title-letter" style="animation-delay: 0.56s">R</span><span class="intro-title-letter" style="animation-delay: 0.64s">E</span>
                     </div>
-                    <span class="kiss-mark intro-kiss text-[#E01E37]" aria-label="Beso de Val_Store">💋</span>
                 </div>
             </div>
             <button onclick="startExperience()" class="intro-button relative z-10 bg-white text-black px-12 py-4 rounded-full font-black text-[13px] uppercase tracking-widest hover:bg-[#E01E37] hover:text-white transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]">
@@ -397,7 +404,7 @@
 
     <nav id="main-nav" class="glass-nav fixed top-0 w-full z-[90] px-4 md:px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="brand-logo brand-wordmark brand-bounce w-[120px] md:w-[150px] font-bold text-lg md:text-xl" id="headerLogo">VAL_STORE <span id="headerKiss" class="kiss-emoji kiss-mark header-kiss text-[#E01E37]" role="button" tabindex="0" aria-label="Enviar besos">💋</span></div>
+            <div class="brand-logo brand-wordmark brand-bounce w-[120px] md:w-[150px] font-bold text-lg md:text-xl" id="headerLogo">VAL_ST<span id="interactiveKiss" class="kiss-o" role="button" tabindex="0" aria-label="Enviar besos">💋</span>RE</div>
             
             <div class="hidden md:flex gap-4">
                 <button onclick="filterItems('Mujer')" class="category-btn active">Mujer</button>
@@ -710,7 +717,7 @@
         }
 
         function createHeartShower(x, y) {
-            const kiss = document.getElementById('headerKiss');
+            const kiss = document.getElementById('interactiveKiss') || document.querySelector('.kiss-o');
             if (!kiss) return;
 
             const bounds = kiss.getBoundingClientRect();
@@ -734,18 +741,19 @@
         }
 
         prepararLluviaPatria();
-        const headerKiss = document.getElementById('headerKiss');
-        headerKiss.addEventListener('click', event => createHeartShower(event.clientX, event.clientY));
-        headerKiss.addEventListener('touchstart', event => {
-            event.preventDefault();
-            const touch = event.changedTouches[0];
-            createHeartShower(touch ? touch.clientX : undefined, touch ? touch.clientY : undefined);
-        }, { passive: false });
-        headerKiss.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') {
+        document.querySelectorAll('.kiss-o').forEach(kiss => {
+            kiss.addEventListener('click', event => createHeartShower(event.clientX, event.clientY));
+            kiss.addEventListener('touchstart', event => {
                 event.preventDefault();
-                createHeartShower();
-            }
+                const touch = event.changedTouches[0];
+                createHeartShower(touch ? touch.clientX : undefined, touch ? touch.clientY : undefined);
+            }, { passive: false });
+            kiss.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    createHeartShower();
+                }
+            });
         });
 
         document.addEventListener("visibilitychange", function() {
