@@ -460,7 +460,11 @@
         let currentFilter = 'Mujer';
         let carrito = JSON.parse(localStorage.getItem('val_store_cart')) || [];
         const bgMusic = document.getElementById('bg-music');
-        const canciones = ['musica/cancion1.mp3'];
+        const canciones = [
+            'musica/cancion1.mp3',
+            'musica/cancion2.mp3',
+            'musica/cancion3.mp3'
+        ];
         const cancionAleatoria = canciones[Math.floor(Math.random() * canciones.length)];
         bgMusic.src = cancionAleatoria;
 
