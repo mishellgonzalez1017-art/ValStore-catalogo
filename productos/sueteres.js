@@ -1,8 +1,8 @@
 export const sueteres = [
   { id: '#052', img: 'https://i.ibb.co/n81wqQKb/IMG-20260624-WA0060.jpg', talla: 'XS/S', precio: 'Q10', titulo: 'Sueter de lana', marca: 'MARCA', cat: 'Mujer' },
   { id: '#053', img: 'https://i.ibb.co/JjTXWJDN/IMG-20260624-WA0054.jpg', titulo: 'Sueter corto mangas abullanadas', precio: 'Q10', talla: 'S', marca: 'OLD NAVY', cat: 'Mujer' },
-  { id: '#054', img: 'https://i.postimg.cc/VNNGtjhg/20260906-171308.jpg', titulo: 'Sueter', precio: 'Q25', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#055', img: 'https://i.postimg.cc/Bnp7thmh/20260906-171408.jpg', titulo: 'Sueter', precio: 'Q30', talla: 'M', marca: 'PINK', cat: 'Mujer' },
+  { id: '#054', img: 'https://i.postimg.cc/VNNGtjhg/20260906-171308.jpg', titulo: 'Sueter', precio: 'VENDIA', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
+  { id: '#055', img: 'https://i.postimg.cc/Bnp7thmh/20260906-171408.jpg', titulo: 'Sueter', precio: 'VENDIDA', talla: 'M', marca: 'PINK', cat: 'Mujer' },
   { id: '#056', img: 'https://i.postimg.cc/SKKT9WPf/20260906-171510.jpg', titulo: 'Sueter', precio: 'VENDIDA', talla: 'S', marca: 'HOLLISTER', cat: 'Mujer' },
   { id: '#057', img: 'https://i.postimg.cc/GmKg9MX5/20260906-171610.jpg', titulo: 'Sueter', precio: 'Q25', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#058', img: 'https://i.postimg.cc/qvcVwXjt/20260906-164718.jpg', titulo: 'Sueter Corto', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
