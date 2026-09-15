@@ -1,3 +1,5 @@
+import { prendas } from './productos.js';
+
 prendas.forEach((prenda, index) => {
     prenda.id = `#${String(index + 1).padStart(3, '0')}`;
 });
@@ -383,3 +385,16 @@ function enviarPedidoWhatsApp() {
     flyingCart.addEventListener('animationend', () => flyingCart.remove(), { once: true });
     setTimeout(() => window.open(urlWA, '_blank'), 360);
 }
+
+Object.assign(window, {
+    agregarAlCarrito,
+    abrirModal,
+    cambiarPrenda,
+    cerrar,
+    eliminarDelCarrito,
+    enviarPedidoWhatsApp,
+    filterItems,
+    startExperience,
+    toggleCartSidebar,
+    toggleMusic
+});
