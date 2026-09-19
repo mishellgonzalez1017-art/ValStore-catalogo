@@ -1,13 +1,9 @@
 export const pantalones = [
   { id: '#086', img: 'https://i.ibb.co/VcZBw5nn/IMG-20260712-WA0041.jpg', titulo: 'Pantalon Petite', precio: 'Q30', talla: 'M', marca: 'SHEIN', cat: 'Mujer' },
-  { id: '#087', img: 'https://i.postimg.cc/8CPpr0NC/20260906-171711.jpg', titulo: 'Palazo', precio: 'VENDIDA', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#088', img: 'https://i.ibb.co/1tzHWn8Z/IMG-20260712-WA0045.jpg', titulo: 'Jogger Tela Ligera', precio: 'Q30', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#089', img: 'https://i.ibb.co/Ps9RW2JY/IMG-20260712-WA0050.jpg', titulo: 'Pantalon de corduroy', precio: 'Q30', talla: 'L', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#090', img: 'https://i.ibb.co/wrzcXHRb/IMG-20260712-WA0053.jpg', titulo: 'Skinny Jeans', precio: 'VENDIDA', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#091', img: 'https://i.ibb.co/N6skyv09/IMG-20260712-WA0055.jpg', titulo: 'Skinny Jeans', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#092', img: 'https://i.ibb.co/Y4sgCbhX/IMG-20260712-WA0058.jpg', titulo: 'Skinny Jeans', precio: 'Q30', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#093', img: 'https://i.ibb.co/NgkcbBPz/IMG-20260712-WA0057.jpg', titulo: 'Pantalon Flare', precio: 'VENDIDA', talla: 'L', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#094', img: 'https://i.ibb.co/4RWLPm7D/IMG-20260712-WA0061.jpg', titulo: 'Pantalon Tipo Jogger', precio: 'VENDIDA', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#095', img: 'https://i.ibb.co/Z1wScqfp/IMG-20260712-WA0062.jpg', titulo: 'Pantalon ', precio: 'Q30', talla: 'M', marca: 'NUEVO', cat: 'Mujer' },
   { id: '#096', img: 'https://i.ibb.co/fz50DGcm/IMG-20260624-WA0032.jpg', titulo: 'Pantalón Formal', precio: 'Q30', talla: '4', marca: 'MARCA', cat: 'Mujer' },
   { id: '#097', img: 'https://i.ibb.co/WWgrmtC9/IMG-20260624-WA0036.jpg', titulo: 'Pantalón con brillo', precio: 'Q30', talla: 'L', marca: 'OLD NAVY', cat: 'Mujer' },
