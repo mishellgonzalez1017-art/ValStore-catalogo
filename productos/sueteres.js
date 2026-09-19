@@ -1,15 +1,6 @@
 export const sueteres = [
-  { id: '#052', img: 'https://i.ibb.co/n81wqQKb/IMG-20260624-WA0060.jpg', talla: 'XS/S', precio: 'Q10', titulo: 'Sueter de lana', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#053', img: 'https://i.ibb.co/JjTXWJDN/IMG-20260624-WA0054.jpg', titulo: 'Sueter corto mangas abullanadas', precio: 'Q10', talla: 'S', marca: 'OLD NAVY', cat: 'Mujer' },
-  { id: '#054', img: 'https://i.postimg.cc/VNNGtjhg/20260906-171308.jpg', titulo: 'Sueter', precio: 'VENDIDA', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#055', img: 'https://i.postimg.cc/Bnp7thmh/20260906-171408.jpg', titulo: 'Sueter', precio: 'VENDIDA', talla: 'M', marca: 'PINK', cat: 'Mujer' },
-  { id: '#056', img: 'https://i.postimg.cc/SKKT9WPf/20260906-171510.jpg', titulo: 'Sueter', precio: 'VENDIDA', talla: 'S', marca: 'HOLLISTER', cat: 'Mujer' },
   { id: '#057', img: 'https://i.postimg.cc/GmKg9MX5/20260906-171610.jpg', titulo: 'Sueter', precio: 'Q25', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#058', img: 'https://i.postimg.cc/qvcVwXjt/20260906-164718.jpg', titulo: 'Sueter Corto', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#059', img: 'https://i.postimg.cc/pdkQbPZJ/IMG-20260809-WA0015.jpg', titulo: 'Sueter de Merlina', precio: 'Q15', talla: '12 a 14 años', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#060', img: 'https://i.postimg.cc/NfyyHDvg/IMG-20260719-WA0046.jpg', titulo: 'Hoddie', precio: 'Q15', talla: 'S/M', marca: 'OLD NAVY', cat: 'Mujer' },
-  { id: '#061', img: 'https://i.postimg.cc/VLSSCgPk/IMG-20260719-WA0047.jpg', titulo: 'Hoddie', precio: 'Q15', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#062', img: 'https://i.postimg.cc/8Pq7BvTD/IMG-20260719-WA0048.jpg', titulo: 'Sueter', precio: 'Q15', talla: 'S', marca: 'DISNEY', cat: 'Mujer' },
   { id: '#063', img: 'https://i.ibb.co/CspfXGV4/IMG-20260719-WA0057.jpg', titulo: 'Gorro', precio: 'Q25', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#064', img: 'https://i.postimg.cc/rsTYKv2H/20260906-172010.jpg', titulo: 'Gorro', precio: 'Q20', talla: 'UNICA', marca: 'MARCA', cat: 'Mujer' },
 ];
