@@ -1,7 +1,7 @@
 export const blusas = [
   { id: '#002', img: 'https://i.postimg.cc/52FxbVPm/20260906-164042.jpg', titulo: 'Blusa Polo', precio: 'Q20', talla: 'XS/S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#005', img: 'https://i.postimg.cc/cL8s0SDn/20260906-164121.jpg', titulo: 'Crop Top', precio: 'Q15', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#007', img: 'https://i.postimg.cc/JzB1MLTJ/20260906-164443.jpg', titulo: 'Blusa', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
+  { id: '#001', img: 'https://i.postimg.cc/JzB1MLTJ/20260906-164443.jpg', titulo: 'Blusa', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#008', img: 'https://i.postimg.cc/3R9hnJwF/20260906-164621.jpg', titulo: 'Blusa Formal Corta', precio: 'Q15', talla: 'S', marca: 'ZARA', cat: 'Mujer' },
   { id: '#010', img: 'https://i.postimg.cc/MHTS42ch/20260906-164847.jpg', titulo: 'Blusa', precio: 'Q15', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#013', img: 'https://i.postimg.cc/Z53hXLRf/20260906-165332.jpg', titulo: 'Blusa', precio: 'Q20', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
