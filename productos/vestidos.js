@@ -7,5 +7,5 @@ export const vestidos = [
   { id: '#104', img: 'https://i.postimg.cc/yd17zSgX/20260906-163545.jpg', titulo: 'Vestido', precio: 'Q10', talla: 'XS', marca: 'MARCA', cat: 'Mujer' },
   { id: '#106', img: 'https://i.postimg.cc/VNRc4LGs/20260906-163858.jpg', titulo: 'Vestido', precio: 'Q10', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#107', img: 'https://i.postimg.cc/jjXrvdgQ/20260906-163933.jpg', titulo: 'Enterizo Corto', precio: 'Q10', talla: 'XS/S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#108', img: 'https://i.postimg.cc/5NLv0ZKB/20260906-170451.jpg', titulo: 'Enterizo Corto', precio: 'Q15', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
+  { id: '#108', img: 'https://i.postimg.cc/5NLv0ZKB/20260906-170451.jpg', titulo: 'Enterizo Corto', precio: 'Q10', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
 ];
