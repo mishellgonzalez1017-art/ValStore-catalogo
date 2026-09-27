@@ -1,9 +1,5 @@
 import { prendas } from './productos.js';
 
-prendas.forEach((prenda, index) => {
-    prenda.id = `#${String(index + 1).padStart(3, '0')}`;
-});
-
 let indexActual = 0;
 let currentFilter = 'Mujer';
 let searchQuery = '';
@@ -343,12 +339,8 @@ function actualizarUI_Carrito() {
 }
 
 function obtenerCodigoPrenda(item) {
-    if (item.id) return item.id;
-
-    const catalogIndex = prendas.findIndex(prenda => prenda.img === item.img);
-    return catalogIndex >= 0
-        ? `#${String(catalogIndex + 1).padStart(3, '0')}`
-        : '#000';
+    const prendaCatalogo = prendas.find(prenda => prenda.img === item.img);
+    return prendaCatalogo?.id || item.id || '';
 }
 
 function enviarPedidoWhatsApp() {
