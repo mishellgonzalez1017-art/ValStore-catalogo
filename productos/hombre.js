@@ -6,7 +6,7 @@ export const hombre = [
   { id: '#114', img: 'https://i.ibb.co/FkyHsk3d/IMG-20260719-WA0061.jpg', titulo: 'Playera', precio: 'VENDIDO', talla: 'M', marca: 'CANVAS', cat: 'Hombre' },
   { id: '#116', img: 'https://i.ibb.co/Rk8SjYCg/IMG-20260719-WA0063.jpg', titulo: 'Conjunto Pijama', precio: 'VENDIDO', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
   { id: '#117', img: 'https://i.ibb.co/BxGtZrw/IMG-20260719-WA0064.jpg', titulo: 'Playera', precio: 'VENDIDO', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
-  { id: '#119', img: 'https://i.postimg.cc/sfKJYBYg/20260906-172416.jpg', titulo: 'Sudadero', precio: 'Q10', talla: 'M/L', marca: 'MARCA', cat: 'Hombre' },
+  { id: '#119', img: 'https://i.postimg.cc/sfKJYBYg/20260906-172416.jpg', titulo: 'Sudadero', precio: 'VENDIDO', talla: 'M/L', marca: 'MARCA', cat: 'Hombre' },
   { id: '#120', img: 'https://i.postimg.cc/QNSqQBQF/20260906-172543.jpg', titulo: 'Sudadero', precio: 'VENDIDO', talla: 'M', marca: 'H&M', cat: 'Hombre' },
   { id: '#122', img: 'https://i.ibb.co/Psf01XHx/IMG-20260624-WA0079.jpg', titulo: 'Sueter casual rayado', precio: 'Q10', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
   { id: '#123', img: 'https://i.ibb.co/nqhTqgsc/IMG-20260624-WA0080.jpg', titulo: 'Sueter', precio: 'Q10', talla: 'M', marca: 'TOMY HILFIGER', cat: 'Hombre' },
@@ -14,7 +14,7 @@ export const hombre = [
   { id: '#125', img: 'https://i.ibb.co/Swbwnf31/IMG-20260624-WA0085.jpg', titulo: 'Duo de Playeras', precio: 'Q10', talla: 'S/M', marca: 'MARCA', cat: 'Hombre' },
   { id: '#126', img: 'https://i.postimg.cc/c1TcRKR4/20260906-172109.jpg', titulo: 'Playera', precio: 'VENDIDO', talla: 'M', marca: 'CHAMPION', cat: 'Hombre' },
   { id: '#127', img: 'https://i.ibb.co/zdTbt2K/IMG-20260624-WA0087.jpg', titulo: 'Playera', precio: 'Q10', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
-  { id: '#128', img: 'https://i.ibb.co/DDVTHk4P/IMG-20260712-WA0066.jpg', titulo: 'Sudadero', precio: 'Q10', talla: 'M', marca: 'GAP', cat: 'Hombre' },
+  { id: '#128', img: 'https://i.ibb.co/DDVTHk4P/IMG-20260712-WA0066.jpg', titulo: 'Sudadero', precio: 'VENDIDO', talla: 'M', marca: 'GAP', cat: 'Hombre' },
   { id: '#129', img: 'https://i.postimg.cc/8z3GjPKY/20260906-172922.jpg', titulo: 'Playera de Spiderman', precio: 'Q10', talla: 'S/M', marca: 'OLD NAVI/MARVEL', cat: 'Hombre' },
   { id: '#130', img: 'https://i.ibb.co/4R3F4WrJ/IMG-20260713-WA0027.jpg', titulo: 'Playera de Spiderman', precio: 'Q10', talla: 'S', marca: 'MARVEL', cat: 'Hombre' },
 ];
