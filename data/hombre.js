@@ -1,7 +1,7 @@
 export const hombre = [
-  { id: '#162', titulo: 'Pans Pijama', marca: 'MARCA', precio: 'Q20', talla: 'S/M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/9M3jyKrw/20261003-165850.jpg', oferta: false, vendido: false },
+  { id: '#162', titulo: 'Pans Pijama', marca: 'MARCA', precio: 'Q20', talla: 'S', categoria: 'Hombre', imagen: 'https://i.postimg.cc/9M3jyKrw/20261003-165850.jpg', oferta: false, vendido: false },
   { id: '#163', titulo: 'Pans Pijama', marca: 'MARCA', precio: 'Q20', talla: 'M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/zGVm68g9/20261003-165922.jpg', oferta: false, vendido: false },
-  { id: '#164', titulo: 'Pijama', marca: 'MARCA', precio: 'Q20', talla: 'S/M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/526cTbzV/20261003-165956.jpg', oferta: false, vendido: false },
+  { id: '#164', titulo: 'Pijama', marca: 'MARCA', precio: 'Q20', talla: 'S', categoria: 'Hombre', imagen: 'https://i.postimg.cc/526cTbzV/20261003-165956.jpg', oferta: false, vendido: false },
   { id: '#165', titulo: 'Pans', marca: 'MARCA', precio: 'Q20', talla: 'M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/dVLMpwCF/20261003-170231.jpg', oferta: false, vendido: false },
   { id: '#110', titulo: 'Camisa tipo polo Nueva', marca: 'CALLAWAY', precio: 'Q10', talla: 'M/L', categoria: 'Hombre', imagen: 'https://i.ibb.co/yBhHQDry/IMG-20260513-WA0029.jpg', oferta: true, vendido: false },
   { id: '#112', titulo: 'Camisa', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/5xKC2p7V/IMG-20260531-WA0028.jpg', oferta: false, vendido: false },
