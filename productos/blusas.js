@@ -3,7 +3,7 @@ export const blusas = [
   { id: '#005', img: 'https://i.postimg.cc/cL8s0SDn/20260906-164121.jpg', titulo: 'Crop Top', precio: 'Q10', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#151', img: 'https://i.postimg.cc/kGmqPzmR/20261003-161635.jpg', titulo: 'Body', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#152', img: 'https://i.postimg.cc/tJjpGwj6/20261003-161803.jpg', titulo: 'Crop Top', precio: 'Q20', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#153', img: 'https://i.postimg.cc/tJjpGwj6/20261003-161803.jpg', titulo: 'Blusa basica ', precio: 'Q20', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
+  { id: '#153', img: 'https://i.postimg.cc/Bn6s32dp/20261003-162120.jpg', titulo: 'Blusa basica ', precio: 'Q20', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#154', img: 'https://i.postimg.cc/9QMV2yvn/20261003-162246.jpg', titulo: 'Blusa', precio: 'Q20', talla: 'S/M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#155', img: 'https://i.postimg.cc/bwJ8P17h/20261003-162414.jpg', titulo: 'Blusa', precio: 'Q25', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
   { id: '#156', img: 'https://i.postimg.cc/Sxsq4cBK/20261003-162604.jpg', titulo: 'Crop Top', precio: 'Q25', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
