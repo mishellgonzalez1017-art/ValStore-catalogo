@@ -1,4 +1,8 @@
 export const hombre = [
+  { id: '#162', img: 'https://i.postimg.cc/9M3jyKrw/20261003-165850.jpg', titulo: 'Pans Pijama', precio: 'Q20', talla: 'S/M', marca: 'MARCA', cat: 'Hombre' },
+  { id: '#163', img: 'https://i.postimg.cc/zGVm68g9/20261003-165922.jpg', titulo: 'Pans Pijama', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
+  { id: '#164', img: 'https://i.postimg.cc/526cTbzV/20261003-165956.jpg', titulo: 'Pijama', precio: 'Q20', talla: 'S/M', marca: 'MARCA', cat: 'Hombre' },
+  { id: '#165', img: 'https://i.postimg.cc/dVLMpwCF/20261003-170231.jpg', titulo: 'Pans', precio: 'Q20', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
   { id: '#110', img: 'https://i.ibb.co/yBhHQDry/IMG-20260513-WA0029.jpg', titulo: 'Camisa tipo polo Nueva', precio: 'Q10', talla: 'M/L', marca: 'CALLAWAY', cat: 'Hombre', oferta: true },
   { id: '#112', img: 'https://i.ibb.co/5xKC2p7V/IMG-20260531-WA0028.jpg', titulo: 'Camisa', precio: 'Q10', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
   { id: '#122', img: 'https://i.ibb.co/Psf01XHx/IMG-20260624-WA0079.jpg', titulo: 'Sueter casual rayado', precio: 'Q10', talla: 'M', marca: 'MARCA', cat: 'Hombre' },
