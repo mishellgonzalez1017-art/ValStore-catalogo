@@ -10,6 +10,7 @@ export const ninos = [
   { id: '#140', img: 'https://i.postimg.cc/ZqdS3t2f/20260906-173250.jpg', titulo: 'Blusa de Nena', precio: 'Q10', talla: '4 Años', marca: 'MARCA', cat: 'Niñ@s' },
   { id: '#141', img: 'https://i.ibb.co/d0gjxc9X/IMG-20260513-WA0033.jpg', titulo: 'Chumpa para nena', precio: 'Q10', talla: '7/8 Años', marca: 'Nena', cat: 'Niñ@s' },
   { id: '#142', img: 'https://i.ibb.co/MFPFfxd/IMG-20260513-WA0034.jpg', titulo: 'Chumpa Para Nena', precio: 'Q10', talla: '2T', marca: 'CAT & JACK', cat: 'Niñ@s' },
+  { id: '#161', img: 'https://i.postimg.cc/TP56Lf2Q/20261003-163557.jpg', titulo: ' Conjunto para niña', precio: 'Q30', talla: '9 a 12 Años', marca: 'H&M', cat: 'Niñ@s' },
   { id: '#143', img: 'https://i.ibb.co/Hp4cnPnh/IMG-20260624-WA0088.jpg', titulo: ' Conjunto para nena', precio: 'Q10', talla: '4T', marca: 'MARCA', cat: 'Niñ@s' },
   { id: '#144', img: 'https://i.ibb.co/kV3Kgg9c/IMG-20260624-WA0089.jpg', titulo: 'Conjunto para nena', precio: 'Q10', talla: '3T', marca: 'MARCA', cat: 'Niñ@s' },
   { id: '#145', img: 'https://i.ibb.co/nNspvFdp/IMG-20260624-WA0090.jpg', titulo: 'Pans para niño', precio: 'Q10', talla: '3T', marca: 'NIKE', cat: 'Niñ@s' },
