@@ -1,8 +1,0 @@
-export const pantalones = [
-  { id: '#086', img: 'https://i.ibb.co/VcZBw5nn/IMG-20260712-WA0041.jpg', titulo: 'Pantalon Petite', precio: 'Q20', talla: 'M', marca: 'SHEIN', cat: 'Mujer' },
-  { id: '#091', img: 'https://i.ibb.co/N6skyv09/IMG-20260712-WA0055.jpg', titulo: 'Skinny Jeans', precio: 'Q20', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#092', img: 'https://i.ibb.co/Y4sgCbhX/IMG-20260712-WA0058.jpg', titulo: 'Skinny Jeans', precio: 'Q20', talla: 'S', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#096', img: 'https://i.ibb.co/fz50DGcm/IMG-20260624-WA0032.jpg', titulo: 'Pantalón Formal', precio: 'Q20', talla: '4', marca: 'MARCA', cat: 'Mujer' },
-  { id: '#097', img: 'https://i.ibb.co/WWgrmtC9/IMG-20260624-WA0036.jpg', titulo: 'Pantalón con brillo', precio: 'Q20', talla: 'L', marca: 'OLD NAVY', cat: 'Mujer' },
-  { id: '#098', img: 'https://i.ibb.co/ZpSKqZgK/IMG-20260513-WA0009.jpg', titulo: 'Pantalón de cuero café', precio: 'Q20', talla: 'M', marca: 'OLD NAVY', cat: 'Mujer' },
-];

@@ -1,7 +1,7 @@
 export const ninos = [
   { id: '#132', titulo: 'Vestido', marca: 'MARCA', precio: 'Q10', talla: '7 a 8 Años', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/8LFvQYSS/IMG-20260719-WA0067.jpg', oferta: false, vendido: false },
   { id: '#133', titulo: 'Pantalon', marca: 'LEVIS', precio: 'Q10', talla: '10', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/9HctGZdM/IMG-20260719-WA0068.jpg', oferta: false, vendido: false },
-  { id: '#134', titulo: 'Playera de niño', marca: 'ADIDAS', precio: 'Q10', talla: '4T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/Q7Lzqsgt/IMG-20260531-WA0035.jpg', oferta: false, vendido: false },
+  { id: '#134', titulo: 'playera de niño', marca: 'ADIDAS', precio: 'Q10', talla: '4T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/Q7Lzqsgt/IMG-20260531-WA0035.jpg', oferta: false, vendido: false },
   { id: '#135', titulo: 'Short', marca: 'MARCA', precio: 'Q10', talla: '8 a 12 Años', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/9HtPK5NM/IMG-20260531-WA0036.jpg', oferta: false, vendido: false },
   { id: '#136', titulo: 'Pantalon de Niña', marca: 'SHEIN', precio: 'Q10', talla: '4Y', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/pjx8NM4S/IMG-20260531-WA0037.jpg', oferta: false, vendido: false },
   { id: '#137', titulo: 'Pans de niño', marca: 'NIKE', precio: 'Q10', talla: '5 a 6 Años', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/v47YKLj8/IMG-20260531-WA0038.jpg', oferta: false, vendido: false },
@@ -10,6 +10,7 @@ export const ninos = [
   { id: '#140', titulo: 'Blusa de Nena', marca: 'MARCA', precio: 'Q10', talla: '4 Años', categoria: 'Niñ@s', imagen: 'https://i.postimg.cc/ZqdS3t2f/20260906-173250.jpg', oferta: false, vendido: false },
   { id: '#141', titulo: 'Chumpa para nena', marca: 'Nena', precio: 'Q10', talla: '7/8 Años', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/d0gjxc9X/IMG-20260513-WA0033.jpg', oferta: false, vendido: false },
   { id: '#142', titulo: 'Chumpa Para Nena', marca: 'CAT & JACK', precio: 'Q10', talla: '2T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/MFPFfxd/IMG-20260513-WA0034.jpg', oferta: false, vendido: false },
+  { id: '#161', titulo: 'Conjunto para niña', marca: 'H&M', precio: 'Q30', talla: '9 a 12 Años', categoria: 'Niñ@s', imagen: 'https://i.postimg.cc/TP56Lf2Q/20261003-163557.jpg', oferta: false, vendido: false },
   { id: '#143', titulo: 'Conjunto para nena', marca: 'MARCA', precio: 'Q10', talla: '4T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/Hp4cnPnh/IMG-20260624-WA0088.jpg', oferta: false, vendido: false },
   { id: '#144', titulo: 'Conjunto para nena', marca: 'MARCA', precio: 'Q10', talla: '3T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/kV3Kgg9c/IMG-20260624-WA0089.jpg', oferta: false, vendido: false },
   { id: '#145', titulo: 'Pans para niño', marca: 'NIKE', precio: 'Q10', talla: '3T', categoria: 'Niñ@s', imagen: 'https://i.ibb.co/nNspvFdp/IMG-20260624-WA0090.jpg', oferta: false, vendido: false },
