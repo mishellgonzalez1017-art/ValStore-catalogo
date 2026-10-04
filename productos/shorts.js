@@ -1,5 +1,7 @@
 export const shorts = [
   { id: '#065', img: 'https://i.ibb.co/8n5ZzFgy/IMG-20260513-WA0016.jpg', titulo: 'Short de lona', precio: 'Q10', talla: 'S', marca: 'Marca', cat: 'Mujer' },
+  { id: '#160', img: 'https://i.postimg.cc/ht5ntfnd/20261003-162652.jpg', titulo: 'Short pijama', precio: 'Q15', talla: 'S/M', marca: 'Marca', cat: 'Mujer' },
+  { id: '#159', img: 'https://i.postimg.cc/5yS14g9W/20261003-162003.jpg', titulo: 'Falda', precio: 'Q25', talla: 'S', marca: 'Marca', cat: 'Mujer' },
   { id: '#067', img: 'https://i.ibb.co/r23FvDfr/IMG-20260712-WA0029.jpg', titulo: 'Falda', precio: 'Q10', talla: 'S', marca: 'AMERICAN EAGLE', cat: 'Mujer' },
   { id: '#071', img: 'https://i.postimg.cc/rpgGXqJb/IMG-20260809-WA0018.jpg', titulo: 'Falda', precio: '10', talla: 'M', marca: 'MARCA', cat: 'Mujer' },
   { id: '#072', img: 'https://i.ibb.co/5grqmH49/IMG-20260712-WA0033.jpg', titulo: 'Sueter Deportivo', precio: 'Q10', talla: 'S/M', marca: 'THE NORTH FACE', cat: 'Mujer' },
