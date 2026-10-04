@@ -1,7 +1,7 @@
 export const blusas = [
   { id: '#150', titulo: 'Blusa', marca: 'MARCA', precio: 'Q20', talla: 'M', categoria: 'Mujer', imagen: 'https://i.postimg.cc/tJjpGwjw/20261003-161312.jpg', oferta: false, vendido: false },
   { id: '#005', titulo: 'Crop Top', marca: 'MARCA', precio: 'Q10', talla: 'S', categoria: 'Mujer', imagen: 'https://i.postimg.cc/cL8s0SDn/20260906-164121.jpg', oferta: false, vendido: false },
-  { id: '#151', titulo: 'Body', marca: 'MARCA', precio: 'Q20', talla: 'M', categoria: 'Mujer', imagen: 'img/151.jpeg', oferta: false, vendido: false },
+  { id: '#151', titulo: 'Body', marca: 'MARCA', precio: 'Q20', talla: 'M', categoria: 'Mujer', imagen: 'img/151.jpg', oferta: false, vendido: false },
   { id: '#152', titulo: 'Crop Top', marca: 'MARCA', precio: 'Q20', talla: 'S', categoria: 'Mujer', imagen: 'https://i.postimg.cc/tJjpGwj6/20261003-161803.jpg', oferta: false, vendido: false },
   { id: '#153', titulo: 'Blusa basica', marca: 'MARCA', precio: 'Q20', talla: 'S', categoria: 'Mujer', imagen: 'https://i.postimg.cc/Bn6s32dp/20261003-162120.jpg', oferta: false, vendido: false },
   { id: '#154', titulo: 'Blusa', marca: 'MARCA', precio: 'Q20', talla: 'S/M', categoria: 'Mujer', imagen: 'https://i.postimg.cc/9QMV2yvn/20261003-162246.jpg', oferta: false, vendido: false },
