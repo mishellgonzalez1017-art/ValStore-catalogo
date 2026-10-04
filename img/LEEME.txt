@@ -1,0 +1,15 @@
+CARPETA DE FOTOS DE LA TIENDA
+
+Aquí se guardan las fotos de las prendas.
+
+Reglas para que funcionen:
+- Nombre de la foto = código de la prenda SIN el #, con 3 números y extensión en minúscula.
+  Ejemplo: la prenda #077 se llama  077.jpg
+- Sin espacios, sin tildes y sin el símbolo # en el nombre.
+- Tamaño recomendado: 1000 píxeles de ancho y menos de 300 KB.
+- Formato: JPG.
+
+Para usar la foto, en el archivo de la categoría (carpeta data) la línea de la prenda
+debe decir:   imagen: 'img/077.jpg'
+
+Este archivo (LEEME.txt) se puede borrar cuando ya haya fotos en la carpeta.

@@ -3,6 +3,16 @@ import { getCatalogProductById } from './catalog.js';
 
 const PHONE_NUMBER = '50240283552';
 
+// Convierte rutas cortas (img/077.jpg) en enlaces completos para que sean
+// clicables en WhatsApp. Los enlaces que ya son completos no cambian.
+function toAbsoluteUrl(path) {
+  try {
+    return new URL(path, document.baseURI).href;
+  } catch {
+    return path;
+  }
+}
+
 export function buildOrderMessage() {
   const items = getCartItems();
 
@@ -19,7 +29,7 @@ export function buildOrderMessage() {
     message += `- Marca: ${item.marca}\n`;
     message += `- Talla: ${item.talla}\n`;
     message += `- Precio: Q${item.precio}\n`;
-    message += `- Imagen: ${item.imagen}\n\n`;
+    message += `- Imagen: ${toAbsoluteUrl(item.imagen)}\n\n`;
     total += Number(item.precio) || 0;
   });
 
