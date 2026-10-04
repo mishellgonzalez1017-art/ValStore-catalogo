@@ -1,0 +1,40 @@
+:root {
+  --brand-red: #E01E37;
+  --bg-dark: #080808;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}

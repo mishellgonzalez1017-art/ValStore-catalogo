@@ -1,0 +1,182 @@
+#intro-bg {
+  display: none;
+}
+
+#hero {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: radial-gradient(circle at 50% 40%, #3c4b56 0%, #25343e 44%, #10191f 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, transform 0.8s ease, perspective 0.8s ease;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  animation: introBackgroundReveal 0.9s ease-out both;
+}
+
+.glow-hero {
+  position: absolute;
+  width: 52vw;
+  height: 52vw;
+  max-width: 560px;
+  max-height: 560px;
+  background: #8eb7c6;
+  filter: blur(110px);
+  opacity: 0.24;
+}
+
+.kiss-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kiss-drop {
+  position: absolute;
+  top: -10vh;
+  left: var(--left);
+  font-size: var(--size);
+  line-height: 1;
+  color: rgba(255, 43, 78, 0.95);
+  text-shadow: 0 0 8px rgba(255, 43, 78, 0.6);
+  filter: drop-shadow(0 0 8px rgba(255, 43, 78, 0.35));
+  opacity: 0;
+  animation: kissRainFall var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  transform: translate3d(0, 0, 0) scale(0.8);
+  will-change: transform, opacity;
+}
+
+.intro-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+  animation: introStageReveal 0.8s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.intro-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 2.5rem 3.5rem 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.56);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 28px 70px rgba(61, 87, 105, 0.16), inset 0 1px rgba(255, 255, 255, 0.9);
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+  animation: introPanelReveal 0.75s 0.34s ease-out both;
+}
+
+.intro-brand {
+  color: #142531;
+  text-align: center;
+}
+
+.intro-brand .brand-wordmark {
+  background: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  color: #18242c;
+  -webkit-text-fill-color: #18242c;
+}
+
+.intro-title {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  color: #18242c;
+  -webkit-text-fill-color: #18242c;
+}
+
+.intro-title-letter {
+  display: inline-block;
+  animation: introLetterWave 3.8s ease-in-out infinite;
+}
+
+.intro-kiss {
+  margin-top: -0.25rem;
+  font-size: 2rem;
+  filter: drop-shadow(0 6px 8px rgba(224, 30, 55, 0.18));
+}
+
+.intro-button {
+  transform: translateZ(52px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(20, 37, 49, 0.88);
+  box-shadow: 0 14px 30px rgba(20, 37, 49, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  animation: introButtonReveal 0.7s 0.7s ease-out both;
+}
+
+#hero.intro-exit .intro-stage {
+  animation: introExit 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@media (max-width: 768px) {
+  #hero {
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0 15px;
+  }
+
+  .intro-stage {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .intro-panel {
+    width: min(100%, 22rem);
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 1.25rem 1.75rem;
+  }
+
+  .intro-brand {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .intro-brand .brand-wordmark {
+    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: clamp(1.4rem, 6.5vw, 2.5rem);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .intro-button {
+    max-width: 100%;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}

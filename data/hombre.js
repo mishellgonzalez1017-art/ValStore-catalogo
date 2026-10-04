@@ -1,0 +1,20 @@
+export const hombre = [
+  { id: '#109', titulo: 'Pans pijama', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/Dw70LLrd/IMG-20260809-WA0030.jpg', oferta: false, vendido: false },
+  { id: '#110', titulo: 'Camisa tipo polo Nueva', marca: 'CALLAWAY', precio: 'Q10', talla: 'M/L', categoria: 'Hombre', imagen: 'https://i.ibb.co/yBhHQDry/IMG-20260513-WA0029.jpg', oferta: true, vendido: false },
+  { id: '#111', titulo: 'Suéter para caballero', marca: 'OLD NAVY', precio: 'Q10', talla: 'S/M', categoria: 'Hombre', imagen: 'https://i.ibb.co/xcLDYZ5/IMG-20260513-WA0030.jpg', oferta: true, vendido: false },
+  { id: '#112', titulo: 'Camisa', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/5xKC2p7V/IMG-20260531-WA0028.jpg', oferta: false, vendido: false },
+  { id: '#114', titulo: 'Playera', marca: 'CANVAS', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/FkyHsk3d/IMG-20260719-WA0061.jpg', oferta: false, vendido: false },
+  { id: '#116', titulo: 'Conjunto Pijama', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/Rk8SjYCg/IMG-20260719-WA0063.jpg', oferta: false, vendido: false },
+  { id: '#117', titulo: 'Playera', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/BxGtZrw/IMG-20260719-WA0064.jpg', oferta: false, vendido: false },
+  { id: '#119', titulo: 'Sudadero', marca: 'MARCA', precio: 'Q10', talla: 'M/L', categoria: 'Hombre', imagen: 'https://i.postimg.cc/sfKJYBYg/20260906-172416.jpg', oferta: false, vendido: false },
+  { id: '#120', titulo: 'Sudadero', marca: 'H&M', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/QNSqQBQF/20260906-172543.jpg', oferta: false, vendido: false },
+  { id: '#122', titulo: 'Sueter casual rayado', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/Psf01XHx/IMG-20260624-WA0079.jpg', oferta: false, vendido: false },
+  { id: '#123', titulo: 'Sueter', marca: 'TOMY HILFIGER', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/nqhTqgsc/IMG-20260624-WA0080.jpg', oferta: false, vendido: false },
+  { id: '#124', titulo: 'Sueter', marca: 'NAUTICA', precio: 'Q10', talla: 'M/L', categoria: 'Hombre', imagen: 'https://i.ibb.co/84jsMGSC/IMG-20260624-WA0082.jpg', oferta: false, vendido: false },
+  { id: '#125', titulo: 'Duo de Playeras', marca: 'MARCA', precio: 'Q10', talla: 'S/M', categoria: 'Hombre', imagen: 'https://i.ibb.co/Swbwnf31/IMG-20260624-WA0085.jpg', oferta: false, vendido: false },
+  { id: '#126', titulo: 'Playera', marca: 'CHAMPION', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/c1TcRKR4/20260906-172109.jpg', oferta: false, vendido: false },
+  { id: '#127', titulo: 'Playera', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/zdTbt2K/IMG-20260624-WA0087.jpg', oferta: false, vendido: false },
+  { id: '#128', titulo: 'Sudadero', marca: 'GAP', precio: 'Q10', talla: 'M', categoria: 'Hombre', imagen: 'https://i.ibb.co/DDVTHk4P/IMG-20260712-WA0066.jpg', oferta: false, vendido: false },
+  { id: '#129', titulo: 'Playera de Spiderman', marca: 'OLD NAVI/MARVEL', precio: 'Q10', talla: 'S/M', categoria: 'Hombre', imagen: 'https://i.postimg.cc/8z3GjPKY/20260906-172922.jpg', oferta: false, vendido: false },
+  { id: '#130', titulo: 'Playera de Spiderman', marca: 'MARVEL', precio: 'Q10', talla: 'S', categoria: 'Hombre', imagen: 'https://i.ibb.co/4R3F4WrJ/IMG-20260713-WA0027.jpg', oferta: false, vendido: false }
+];
