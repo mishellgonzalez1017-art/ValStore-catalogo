@@ -1,5 +1,5 @@
 export const vestidos = [
-  { id: '#166', titulo: 'Vestido', marca: 'ZARA', precio: 'Q40', talla: 'S', categoria: 'Mujer', imagen: 'https://i.postimg.cc/d0wX2CY9/file-00000000213881f68bd55ce957426e53.png', oferta: false, vendido: false },
+  { id: '#166', titulo: 'Vestido', marca: 'ZARA', precio: 'Q40', talla: 'S', categoria: 'Mujer', imagen: 'img/166.jpeg', oferta: false, vendido: false },
   { id: '#167', titulo: 'Vestido tipo camisa', marca: 'MARCA', precio: 'Q30', talla: 'S/M', categoria: 'Mujer', imagen: 'https://i.postimg.cc/nLp54mJm/IMG-20260906-204107-139.webp', oferta: false, vendido: false },
   { id: '#099', titulo: 'Falda', marca: 'MARCA', precio: 'Q10', talla: 'S', categoria: 'Mujer', imagen: 'https://i.ibb.co/gZzQxZhM/IMG-20260531-WA0012.jpg', oferta: false, vendido: false },
   { id: '#100', titulo: 'Vestido de lana', marca: 'MARCA', precio: 'Q10', talla: 'M', categoria: 'Mujer', imagen: 'https://i.ibb.co/gL29WL1w/IMG-20260531-WA0021.jpg', oferta: false, vendido: false },
