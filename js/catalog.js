@@ -38,19 +38,14 @@ export function renderGallery() {
   const filteredProducts = getFilteredProducts();
 
   if (!filteredProducts.length) {
-    gallery.innerHTML = '<p class="empty-results">No encontramos prendas con esos filtros. Prueba otra búsqueda o categoría.</p>';
-    const count = document.getElementById('catalog-count');
-    if (count) count.textContent = '0 prendas';
+    gallery.innerHTML = '<p class="empty-results">No se encontraron prendas que coincidan con tu búsqueda 💋</p>';
     return;
   }
-
-  const count = document.getElementById('catalog-count');
-  if (count) count.textContent = `${filteredProducts.length} ${filteredProducts.length === 1 ? 'prenda' : 'prendas'}`;
 
   const cards = filteredProducts
     .map((product, index) => {
       const soldBadge = product.vendido
-        ? '<span class="sold-badge">Agotada</span>'
+        ? '<div class="absolute inset-0 flex items-center justify-center bg-black/40 font-black text-xs tracking-widest text-red-500 uppercase">AGOTADO</div>'
         : '';
 
       const imageClasses = product.vendido ? 'opacity-40 grayscale' : '';
@@ -65,8 +60,6 @@ export function renderGallery() {
           data-action="open-modal"
           data-id="${product.id}"
           data-product-id="${product.id}"
-          role="button"
-          tabindex="0"
           style="animation-delay: ${index * 0.08}s;"
           aria-label="Abrir detalle de ${itemTitle}"
         >
@@ -81,10 +74,10 @@ export function renderGallery() {
             ${soldBadge}
           </div>
           <div class="p-4 md:p-6">
-            <p class="text-[8px] font-black tracking-[0.2em] md:tracking-[0.3em] brand-label uppercase">${itemBrand}</p>
+            <p class="text-[8px] font-black tracking-[0.2em] md:tracking-[0.3em] text-[#E01E37] uppercase">${itemBrand}</p>
             <h3 class="text-xs md:text-sm font-bold truncate mt-1">${itemTitle}</h3>
             <div class="flex justify-between items-center mt-2 md:mt-4">
-              <span class="font-black text-sm md:text-lg ${product.vendido ? 'text-gray-500 font-medium line-through' : ''}">${formatPrice(product.precio)}</span>
+              <span class="font-black text-sm md:text-lg ${product.vendido ? 'text-red-500 font-medium' : ''}">${formatPrice(product.precio)}</span>
               <span class="text-[9px] md:text-[10px] text-gray-500 font-mono">${itemId}</span>
             </div>
             <div class="flex justify-between items-center mt-1">
@@ -104,6 +97,5 @@ export function updateCategoryButtons() {
   categoryButtons.forEach((button) => {
     const isActive = button.dataset.filter === state.currentFilter || button.textContent.includes(state.currentFilter);
     button.classList.toggle('active', isActive);
-    button.setAttribute('aria-pressed', String(isActive));
   });
 }

@@ -47,10 +47,9 @@ function bindGlobalEvents() {
         changeProduct(direction);
         break;
       case 'add-to-cart':
-        if (addProductToCart(productId)) {
-          closeModal();
-          toggleCartSidebar();
-        }
+        addProductToCart(productId);
+        closeModal();
+        toggleCartSidebar();
         break;
       case 'remove-cart-item':
         removeProductFromCart(productId);
@@ -76,13 +75,6 @@ function bindGlobalEvents() {
   });
 
   document.addEventListener('keydown', (event) => {
-    if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-action="open-modal"]')) {
-      event.preventDefault();
-      lastFocusedElement.current = event.target;
-      openModal(event.target.dataset.productId || event.target.dataset.id);
-      return;
-    }
-
     const modal = document.getElementById('modal');
     if (event.key === 'Escape') {
       if (modal && !modal.classList.contains('hidden')) {
@@ -119,7 +111,10 @@ function startExperience() {
   if (musicControl) {
     musicControl.style.opacity = '1';
   }
-  toggleMusic();
+  const audio = document.getElementById('bg-music');
+  if (audio) {
+    audio.play().catch(() => {});
+  }
 }
 
 function initializeApp() {

@@ -16,7 +16,6 @@ export function openModal(productId) {
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
-    document.getElementById('btn-agregar-carrito')?.focus();
   }
 
   const trigger = document.querySelector('[data-action="open-modal"][data-id="' + product.id + '"]');
@@ -32,10 +31,7 @@ export function closeModal() {
     modal.classList.remove('flex');
   }
 
-  document.body.style.overflow = '';
-  const trigger = document.querySelector('[data-action="open-modal"][data-last-focus="true"]');
-  trigger?.focus();
-  trigger?.removeAttribute('data-last-focus');
+  document.body.style.overflow = 'auto';
 }
 
 export function changeProduct(direction) {
