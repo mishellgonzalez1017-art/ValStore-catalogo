@@ -87,6 +87,8 @@ export function renderCart() {
     badge.classList.add('hidden');
     badge.textContent = '0';
     totalElement.textContent = 'Q0';
+    const checkout = document.querySelector('[data-action="confirm-whatsapp"]');
+    if (checkout) checkout.disabled = true;
     return;
   }
 
@@ -126,4 +128,6 @@ export function renderCart() {
   badge.textContent = String(items.length);
   badge.classList.remove('hidden');
   totalElement.textContent = `Q${total}`;
+  const checkout = document.querySelector('[data-action="confirm-whatsapp"]');
+  if (checkout) checkout.disabled = false;
 }

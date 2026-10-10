@@ -28,7 +28,10 @@ export function getCart() {
     const parsedValue = storedValue ? JSON.parse(storedValue) : [];
     const normalizedCart = normalizeLegacyCart(parsedValue);
 
-    const validCart = normalizedCart.filter((itemId) => !!getCatalogProductById(itemId));
+    const validCart = normalizedCart.filter((itemId) => {
+      const product = getCatalogProductById(itemId);
+      return Boolean(product && !product.vendido);
+    });
     const uniqueCart = [...new Set(validCart)];
 
     if (JSON.stringify(uniqueCart) !== JSON.stringify(normalizedCart)) {
